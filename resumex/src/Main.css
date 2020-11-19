@@ -1,0 +1,25 @@
+.input {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  
+}
+
+.textarea {
+  width: 450px;
+  height: 450px;
+  padding: 20px;
+}
+
+.main_button {
+  background-color: rgb(20, 169, 228);
+  color: white;
+  height: 30px;
+  width: 120px;
+  margin: 30px
+}
