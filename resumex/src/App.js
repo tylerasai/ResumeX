@@ -1,14 +1,18 @@
 import './App.css';
 import Main from './Main';
 import Nav from './Nav';
-
-function App() {
+import Footer from './footer';
+import Home from './home';
+function App(props) {
+  console.log("these are inputs",props.input);
   return (
     <div className="App">
-     
-      <Nav />
-      <br></br>
-      <Main />
+     <div><Nav /></div>
+      
+    <div><Home /></div>
+    {/* <div><Main /></div> */}
+      
+      <div><Footer /></div>
     </div>
   );
 }
