@@ -9,8 +9,8 @@ function App(props) {
     <div className="App">
      <div><Nav /></div>
       
-    <div><Home /></div>
-    {/* <div><Main /></div> */}
+    {/* <div><Home /></div> */}
+    <div><Main /></div>
       
       <div><Footer /></div>
     </div>

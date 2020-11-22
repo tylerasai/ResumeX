@@ -1,16 +1,18 @@
 import React, {useState} from "react";
 import "./Main.css";
 import {editText} from "./selector";
-
+import useKeyWords from "./Hooks/KeyWords";
+import pairMatch from "./Helpers/pairMatch";
 
 export default function Main() {
 const [input, setInput] = useState("");
 const [input1, setInput1] = useState("");
 const [edit, setEdit] = useState([""])
+const { keywords } = useKeyWords();
 
-const newText = editText(input).map(item => {
-  return item +"\n";
-} )
+
+const newText = pairMatch(keywords, input);
+//printarray
 
 console.log("show input: ", input, "newtext is: ", newText);
 
