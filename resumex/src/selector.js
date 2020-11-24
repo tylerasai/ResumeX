@@ -1,4 +1,4 @@
-const editText = function (text){
+const countWords = function (text){
 console.log( "text here is ", text)
   const clearText = text
     .replace(/[^a-zA-Z0-9 ]/g, " ")
@@ -14,7 +14,7 @@ console.log( "text here is ", text)
       wordRank[word] += 1;
     }
   }
-  const wordExclusions = ["and","the","is","but","a","or","job","as","be","by","for","from","in"," ","  ","","to","of","an","at","on","with","that","uses","are","who","you"];
+  const wordExclusions = ["and","the","is","but","a","or","job","as","be","by","for","from","in"," ","  ","","to","of","an","at","on","with","that","uses","are","who","you","we"];
   const sortable = [];
   for (let word in wordRank) {
     if(!wordExclusions.includes(word))  
@@ -30,4 +30,4 @@ console.log( "text here is ", text)
   return sortable
 }
 
-module.exports = {editText}
+module.exports = {countWords}
