@@ -58,7 +58,7 @@ return (
 					<div class="single-service">
 						<div class="part-1">
 							<i class="fas fa-award"></i>
-							<h3 class="title">REsume scan services</h3>
+							<h3 class="title">Resume scan services</h3>
 						</div>
 						<div class="part-2">
 							<p class="description">You will be able to submit your resume, our system will then recommend for you changes in your resume and how close does it match with job description</p>
