@@ -7,7 +7,7 @@ a,p,h1,h2,h3,h4,ul {
 	padding-top: 110px;
 	padding-bottom: 120px;
 	font-family: "Poppins", sans-serif;
-	background-color: #211f24;
+	background-color: rgb(128, 123, 123);
 	color: #fff;
 }
 
@@ -19,7 +19,7 @@ a,p,h1,h2,h3,h4,ul {
 	position: relative;
 	margin-bottom: 40px;
 	padding-bottom: 25px;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	font-weight: 700;
 }
 
@@ -50,12 +50,12 @@ a,p,h1,h2,h3,h4,ul {
 }
 
 .section-services .header-section .description {
-	color: #6f6f71;
+	color: #464649;
 }
 
 .section-services .single-service {
 	margin-top: 40px;
-	background-color: #24252a;
+	background-color: #434444;
 	box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
 }
 

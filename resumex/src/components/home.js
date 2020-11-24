@@ -23,7 +23,7 @@ return (
 			<div class="row justify-content-center text-center">
 				<div class="col-md-10 col-lg-8">
 					<div class="header-section">
-						<h2 class="title">Exclusive <span>Services</span></h2>
+						<h2 class="title">Resume<span>X</span></h2>
 						<p class="description">The website is used to prepare your resume for matching your favorite job.</p>
 						<a href="/main"><button type="submit" form="main_form" value="Submit" className="main_button" >Main page</button></a>
 					</div>
