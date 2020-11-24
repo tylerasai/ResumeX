@@ -1,7 +1,10 @@
 import React, {useState} from "react";
 import "./home.css";
+import Main from "./Main"
+// import useVisualMode from "../Hooks/useVisualMode"
 
-export default function Home() {
+export default function Home(props) {
+
 return (
 <html lang="en">
 <head>
@@ -22,6 +25,7 @@ return (
 					<div class="header-section">
 						<h2 class="title">Exclusive <span>Services</span></h2>
 						<p class="description">The website is used to prepare your resume for matching your favorite job.</p>
+						<a href="/main"><button type="submit" form="main_form" value="Submit" className="main_button" >Main page</button></a>
 					</div>
 				</div>
 			</div>

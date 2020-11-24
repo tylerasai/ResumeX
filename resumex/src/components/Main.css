@@ -25,8 +25,9 @@ form {
   margin: 30px;
 }
 .whole-main {
-  background-image: url("https://wallpaperaccess.com/full/2862101.jpg");
-  background-color: #cccccc;
+  /* background-image: url("https://wallpaperaccess.com/full/2862101.jpg");
+  background-color: #cccccc; */
+  background-color: white;
 }
 
 .jumbotron {
@@ -43,4 +44,27 @@ form {
 .jumbotron-heading {
   color: white;
 
+}
+#main_form {
+   display: flex;
+  flex-direction: row;
+
+}
+
+.upload-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.job-upload {
+  background-color: white;
+  margin-right: 3rem;
+  margin-left: 1rem;
+}
+
+.resume-upload {
+  background-color: white;
+  margin-right: 2rem;
 }
