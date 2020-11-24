@@ -44,3 +44,26 @@ form {
   color: white;
 
 }
+
+.results_container {
+  display: flex;
+  justify-content: center;
+  border: rgb(108, 108, 197) 20px solid;
+  padding: 20px;
+}
+
+.bars_container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 20px 0;
+}
+
+.bars_container span {
+  text-align: right;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  color: #0275d8;
+  font-weight: 600;
+  font-size: 1.5em;
+}

@@ -3,6 +3,7 @@ import Main from './Main';
 import Nav from './Nav';
 import Footer from './footer';
 import Home from './home';
+
 function App(props) {
   console.log("these are inputs",props.input);
   return (
