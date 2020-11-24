@@ -1,7 +1,4 @@
-.input {
-  display: flex;
-  justify-content: center;
-}
+
 
 form {
   display: flex;
@@ -25,14 +22,13 @@ form {
   margin: 30px;
 }
 .whole-main {
-  /* background-image: url("https://wallpaperaccess.com/full/2862101.jpg");
-  background-color: #cccccc; */
+
   background-color: white;
 }
 
 .jumbotron {
-  background-image: url("https://wallpaperaccess.com/full/2862101.jpg");
-  background-color: #cccccc;
+  background-color: #3b76e4;
+  display: flex;
 
  
 }
@@ -45,11 +41,7 @@ form {
   color: white;
 
 }
-#main_form {
-   display: flex;
-  flex-direction: row;
 
-}
 
 .upload-tag {
   display: flex;
@@ -60,13 +52,13 @@ form {
 
 .job-upload {
   background-color: white;
-  margin-right: 3rem;
-  margin-left: 1rem;
+  width: 10px;
+
 }
 
 .resume-upload {
   background-color: white;
-  margin-right: 2rem;
+  width: 10px;
 }
 
 .results_container {
@@ -90,4 +82,48 @@ form {
   color: #0275d8;
   font-weight: 600;
   font-size: 1.5em;
+}
+
+.logo_container img {
+  height: 50px;
+  filter: invert(3);
+}
+
+.job-area textarea {
+  border: 5px #0275d8 solid;
+  text-align: center;
+  padding: 100px 0;
+
+}
+
+.resume-area textarea {
+  border: 5px #0c7e49 solid; 
+  text-align: center;
+  padding: 100px 0;
+
+
+}
+
+.job-area {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.resume-area {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: none;
+  border: none;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
 }

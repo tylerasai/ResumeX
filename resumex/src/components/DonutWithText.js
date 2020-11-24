@@ -2,7 +2,6 @@ import React from 'react';
 import {Doughnut, Chart} from 'react-chartjs-2';
 import "./DonutWithText.css";
 
-// some of this code is a variation on https://jsfiddle.net/cmyker/u6rr5moq/
 var originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
 Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
   draw: function() {
@@ -14,7 +13,7 @@ Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
         ctx = chart.chart.ctx;
 
     var fontSize = (height / 114).toFixed(2);
-    ctx.font = fontSize + "900 bold" + "em sans-serif";
+    ctx.font = fontSize + "em sans-serif";
     ctx.fillStyle = "green";
     ctx.textBaseline = "middle";
 
