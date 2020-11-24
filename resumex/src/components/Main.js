@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import "./Main.css";
-import {editText} from "../Helpers/selector";
+
 import useKeyWords from "../Hooks/KeyWords";
 import pairMatch from "../Helpers/pairMatch";
+import getScores from "../Helpers/getScores";
+import compareText from "../Helpers/compareText"
 import mammoth from "mammoth";
 import DonutWithText from "../components/DonutWithText";
 import BarChart from "../components/BarChart";
@@ -14,8 +16,26 @@ const [input1, setInput1] = useState("");
 const [edit, setEdit] = useState([""])
 const { keywords } = useKeyWords();
 
+//vitalKeywords is an array with the same words of the database and jobposting
+//for the vital keywords
 
-const newText = pairMatch(keywords, input);
+const vitalKeywords = pairMatch(keywords, input)
+
+
+
+//this a score of how many of the 
+//vital keywords you have in your resume.
+const firstScore = getScores(vitalKeywords,input1)
+
+
+//resumeAndPosting is an array of the words 
+//that repeat on the posting and repeat on the resume with a count of each
+
+const resumeAndPosting = compareText(input1, input) 
+
+// console.log("resumeandposting is: ", resumeAndPosting);
+// console.log("show database keywords: ", keywords, "vitalKeywords: ", vitalKeywords)
+// console.log("firstScore",firstScore);
 //printarray
 
 //Dummy for the donut
@@ -39,7 +59,7 @@ const onChange1 = function(event){
   setInput1(event.target.value);
 }
 const onClick = function () {
-  setEdit(newText)
+  setEdit(vitalKeywords)
 }
 
 const wordTextResume = function(buffer) {
@@ -144,7 +164,7 @@ const onChangeJob = function(event){
 
       <button type="submit" form="main_form" value="Submit" className="main_button" onClick={onClick}>Submit</button>
        {/* <h4>{edit}</h4> */}
-        <h4>{newText}</h4>
+        <h4>{vitalKeywords}</h4>
       
       
 
