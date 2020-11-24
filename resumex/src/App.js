@@ -9,10 +9,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
 function App(props) {
   console.log("these are inputs",props.input);
-
   return (
     <Router>
       <div className="App">
@@ -21,7 +19,6 @@ function App(props) {
           <Route path="/main">
             <Main />
           </Route>
-         
           <Route path="/">
             <Home />
           </Route>
@@ -31,5 +28,4 @@ function App(props) {
     </Router>
   );
 }
-
 export default App;

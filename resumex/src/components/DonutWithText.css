@@ -1,0 +1,12 @@
+.match_rate_container {
+  margin: "auto";
+  width: 500px;
+  height: auto;
+}
+
+.match_rate_container p {
+  color: green;
+  font-weight: 900;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}

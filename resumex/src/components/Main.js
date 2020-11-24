@@ -4,6 +4,8 @@ import {editText} from "../Helpers/selector";
 import useKeyWords from "../Hooks/KeyWords";
 import pairMatch from "../Helpers/pairMatch";
 import mammoth from "mammoth";
+import DonutWithText from "../components/DonutWithText";
+import BarChart from "../components/BarChart";
 
 
 export default function Main() {
@@ -15,6 +17,19 @@ const { keywords } = useKeyWords();
 
 const newText = pairMatch(keywords, input);
 //printarray
+
+//Dummy for the donut
+  //dummy for the barchart
+  const hardSkillScore = 50;
+  const softSkillScore = 70;
+  const specificKeywords = 100;
+  const skillsSum = hardSkillScore + softSkillScore +specificKeywords;
+  const totalScore = 300;
+  
+  //Dummy variables for charts
+  
+  const match = Math.floor(skillsSum/totalScore * 100) ;
+  const unmatch = 100 - match;
 
 
 const onChange = function(event){
@@ -77,6 +92,7 @@ const onChangeJob = function(event){
 
 
   return (
+    <>
     <div class="whole-main">
        <section class="jumbotron text-center">
         <div class="container">
@@ -133,5 +149,18 @@ const onChangeJob = function(event){
       
 
     </div>
+    <div className="results_container">
+      <DonutWithText match={match} unmatch={unmatch} />
+      
+      <div className="bars_container">
+      <span>Primary Key Words</span>
+      <BarChart score={hardSkillScore} />
+      <span>Soft Skills Match</span>
+      <BarChart score={softSkillScore} />
+      <span>Posting Specific Keywords Match</span>
+      <BarChart score={specificKeywords} />
+      </div>
+      </div>
+    </>
   );
 }
