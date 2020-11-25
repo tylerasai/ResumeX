@@ -1,34 +1,43 @@
 import React, { useState } from "react";
+
+
 import "./Main.css";
 import useKeyWords from "../Hooks/KeyWords";
 import useSoftSkills from "../Hooks/SoftSkills";
 import pairMatch from "../Helpers/pairMatch";
 import getScores from "../Helpers/getScores";
 import compareText from "../Helpers/compareText"
+import {extractWordsOnly} from "../Helpers/extrahelp";
 import mammoth from "mammoth";
 import DonutWithText from "../components/DonutWithText";
 import BarChart from "../components/BarChart";
 import document_logo from "../assets/img/document_logo.svg";
+import { findAll } from "highlight-words-core";
 import Table from "../components/Table";
 import { first } from "underscore";
 
+
 export default function Main() {
-const [input, setInput] = useState("");
-const [input1, setInput1] = useState("");
+const [jobPosting, setJobposting] = useState("");
+const [resume, setResume] = useState("");
 const [edit, setEdit] = useState([""]);
-const [edit1, setEdit1] = useState([""]);
-const [edit2, setEdit2] = useState([""]);
-const [edit3, setEdit3] = useState([""]);
+const [PrimaryScore, setPrimaryScore] = useState([""]);
+const [resumeAndPostingComp, setResumeAndPosting] = useState([""]);
+const [highlightWords, setHighlightWords] = useState([""]);
+
+
 const { keywords } = useKeyWords();
 const { softskills } = useSoftSkills();
+
+
 
 //vitalKeywords is an array with the same words of the database and jobposting
 //for the vital keywords
 
 
 
-const vitalKeywords = pairMatch(keywords, input)
-const vitalSoftSkills = pairMatch(softskills, input);
+const vitalKeywords = pairMatch(keywords, jobPosting)
+const vitalSoftSkills = pairMatch(softskills, jobPosting);
 console.log("vitalsoftskills:", vitalSoftSkills);
 
 // 
@@ -36,13 +45,35 @@ console.log("vitalsoftskills:", vitalSoftSkills);
 
 //this a score of how many of the 
 //vital keywords you have in your resume.
-const firstScore = getScores(vitalKeywords,input1);
-const secondScore = getScores(vitalSoftSkills, input1);
+const firstScore = getScores(vitalKeywords,resume);
+const secondScore = getScores(vitalSoftSkills, resume);
 
 //resumeAndPosting is an array of the words 
 //that repeat on the posting and repeat on the resume with a count of each
 
-const resumeAndPosting = compareText(input1, input) 
+// const resumeAndPosting = compareText(resume, jobPosting) 
+
+
+// const vitalKeywords = pairMatch(keywords, jobPosting)
+
+// const firstScore = getScores(vitalKeywords,resume)
+
+// const resumeAndPosting = compareText(resume, jobPosting) 
+
+
+const textToHighlight = resume
+const searchWords = highlightWords
+const chunks = findAll({
+  searchWords,
+  textToHighlight
+});
+
+
+
+
+
+
+const resumeAndPosting = compareText(resume, jobPosting) 
 
 console.log("resumeandposting is: ", resumeAndPosting);
 // console.log("show database keywords: ", keywords, "vitalKeywords: ", vitalKeywords)
@@ -64,19 +95,21 @@ console.log("SECOND SCORE", secondScore);
   //Dummy variables for charts
 
 const onChange = function(event){
-  setInput(event.target.value);
+  setJobposting(event.target.value);
 }
 const onChange1 = function(event){
-  setInput1(event.target.value);
+  setResume(event.target.value);
 }
-
-
-const onClick = function(event) {
-  event.preventDefault();
-
-  setEdit1(hardSkillScore);
-  setEdit3(softSkillScore);
-
+const onClick = function (event) {
+  event.preventDefault(); 
+  //set state on the vitalKeywords, firstScore, resumeandPosting
+ setEdit(vitalKeywords)
+ setPrimaryScore(hardSkillScore)
+ setResumeAndPosting(resumeAndPosting)
+ setHighlightWords(extractWordsOnly(vitalKeywords)) 
+ // console.log("resumeandposting is: ", resumeAndPosting);
+  // console.log("show database keywords: ", keywords, "vitalKeywords: ", vitalKeywords)
+  // console.log("firstScore",firstScore);
 }
 
 const wordTextResume = function(buffer) {
@@ -86,7 +119,7 @@ const wordTextResume = function(buffer) {
   .then(function(result){
       const text = result.value; // The raw text
       const messages = result.messages;
-      setInput1(text);
+      setResume(text);
     })
   .done();
 }
@@ -113,7 +146,7 @@ const onChangeResume = function(event){
       .extractRawText({ arrayBuffer: buffer })
       .then(function (result) {
         const text = result.value; // The raw text
-        setInput(text);
+        setJobposting(text);
       })
       .done();
   };
@@ -128,6 +161,22 @@ const onChangeResume = function(event){
 
     reader.readAsArrayBuffer(fileData);
   };
+
+  const highlightedText = chunks
+  .map(chunk => {
+    const { end, highlight, start } = chunk;
+    const text = textToHighlight.substr(start, end - start);
+    console.log("text",text)
+    console.log("highlight", highlight)
+    if (highlight) {
+      return `<mark style="background-color: yellow">${text}</mark>`;
+    } else {
+      
+      return text;
+      
+    }
+  })
+  .join("");
 
   return (
     <>
@@ -147,20 +196,20 @@ const onChangeResume = function(event){
         <section className="input">
           <form id="main_form">
             <div class="job-area">
-              <textarea className="textarea" name="job_description" placeholder="Paste Your Job Description Here" value={input} onChange={onChange}></textarea>
+              <textarea className="textarea" name="job_description" placeholder="Paste Your Job Description Here" value={jobPosting} onChange={onChange}></textarea>
               <form class="job-upload">
-              <input type="file" id="myFile" name="filename"onChange={onChangeJob}></input>
+              <input type="file" id="myFile" name="filename"></input>
               </form>
             </div>
             <div class="resume-area">
-              <textarea className="textarea" name="resume" placeholder="Paste Your Resume Here" value={input1} onChange={onChange1}></textarea>
+              <textarea className="textarea" name="resume" placeholder="Paste Your Resume Here" value={resume} onChange={onChange1}></textarea>
               <form class="resume-upload">
               <input type="file" id="myFile" name="filename" onChange={onChangeResume}></input>
               </form>
             </div>
           </form>
         </section>
-
+        
 
         <button
           type="submit"
@@ -172,7 +221,7 @@ const onChangeResume = function(event){
           Submit
         </button>
         {/* <h4>{edit}</h4> */}
-        <h4>{vitalKeywords}</h4>
+        <h4>{resumeAndPostingComp}</h4>
       </div>
       <h1 className="overview">Summary</h1>
       <div className="results_container">
@@ -180,13 +229,16 @@ const onChangeResume = function(event){
 
         <div className="bars_container">
           <span>Primary Key Words</span>
-          <BarChart score={edit1} />
+          <BarChart score={PrimaryScore} />
           <span>Soft Skills Match</span>
-          <BarChart score={edit3} />
+          <BarChart score={secondScore} />
           <span>Posting Specific Keywords Match</span>
           <BarChart score={specificKeywords} />
         </div>
       </div>
+      
+  <div dangerouslySetInnerHTML = {{__html:highlightedText}}></div>  
     </>
+        
   );
 }
