@@ -198,7 +198,7 @@ const onChangeResume = function(event){
             <div class="job-area">
               <textarea className="textarea" name="job_description" placeholder="Paste Your Job Description Here" value={jobPosting} onChange={onChange}></textarea>
               <form class="job-upload">
-              <input type="file" id="myFile" name="filename"></input>
+              <input type="file" id="myFile" name="filename" onChange={onChangeJob}></input>
               </form>
             </div>
             <div class="resume-area">
