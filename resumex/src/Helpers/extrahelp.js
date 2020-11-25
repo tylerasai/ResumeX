@@ -1,3 +1,12 @@
+const extractWordsOnly = function (array) {
+  let wordsOnlyArray = []
+  for(let item of array) {
+    wordsOnlyArray.push(item[0])
+  }
+  return wordsOnlyArray;
+}
+
+
 const createArrayofText = function (text) {
   
   const textArray = text
@@ -41,4 +50,4 @@ const ObjectToRankedArray = function (wordRank) {
   return sortable;
 }
 
-module.exports = {ObjectToRankedArray,extractKeywords,createArrayofText,wordRanker}
+module.exports = {ObjectToRankedArray,extractKeywords,createArrayofText,wordRanker,extractWordsOnly}
