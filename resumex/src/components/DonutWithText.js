@@ -57,7 +57,7 @@ export default function DonutWithText(props) {
     },
     responsive: true,
     maintainAspectRatio: true,
-    cutoutPercentage: 50
+    cutoutPercentage: 70
 
 
   }
