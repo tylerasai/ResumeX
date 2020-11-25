@@ -54,11 +54,11 @@ const getScores = function (vitalKeywords, Resume) {
   
   const topTenVital = [];
   
-  for (let i = 0; i < 10; i++) {              //get the top ten vitalKeywords
+  for (let i = 0; i < vitalKeywords.length; i++) {              //get the top ten vitalKeywords
     topTenVital.push(vitalKeywords[i][0]);
   }
   const resumeArray = createArrayofText(Resume) //creates an array of words from the text
-  
+  topTenVital.slice(0,10)
   let primaryScore = 0;
 
   for (let i = 0; i < 10; i++) {
