@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { getPostsByUsers } = require("../helpers/dataHelpers");
 
-module.exports = ({ getKeywords }) => {
-  /* GET keywords listing. */
+module.exports = ({ getSoftSkills }) => {
+  
+  //Get soft skills
   router.get("/", (req, res) => {
-    getKeywords()
-      .then((keywords) => res.json(keywords))
+    getSoftSkills()
+      .then((softskills) => res.json(softskills))
       .catch((err) =>
         res.json({
           error: err.message,
@@ -16,7 +16,6 @@ module.exports = ({ getKeywords }) => {
 
   
 
-  
-
   return router;
+
 };

@@ -9,6 +9,8 @@ const createArrayofText = function (text) {
 }
 
 const extractKeywords = function (array) {
+
+  
   let resultArray = [];
   for (let item of array) {
     resultArray.push(item["keyword"].toLowerCase());

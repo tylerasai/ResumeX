@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Main.css";
 import useKeyWords from "../Hooks/KeyWords";
+import useSoftSkills from "../Hooks/SoftSkills";
 import pairMatch from "../Helpers/pairMatch";
 import getScores from "../Helpers/getScores";
 import compareText from "../Helpers/compareText"
@@ -8,46 +9,57 @@ import mammoth from "mammoth";
 import DonutWithText from "../components/DonutWithText";
 import BarChart from "../components/BarChart";
 import document_logo from "../assets/img/document_logo.svg";
+import Table from "../components/Table";
+import { first } from "underscore";
 
 export default function Main() {
 const [input, setInput] = useState("");
 const [input1, setInput1] = useState("");
-const [edit, setEdit] = useState([""])
+const [edit, setEdit] = useState([""]);
+const [edit1, setEdit1] = useState([""]);
+const [edit2, setEdit2] = useState([""]);
+const [edit3, setEdit3] = useState([""]);
 const { keywords } = useKeyWords();
+const { softskills } = useSoftSkills();
 
 //vitalKeywords is an array with the same words of the database and jobposting
 //for the vital keywords
 
-const vitalKeywords = pairMatch(keywords, input)
 
+
+const vitalKeywords = pairMatch(keywords, input)
+const vitalSoftSkills = pairMatch(softskills, input);
+console.log("vitalsoftskills:", vitalSoftSkills);
+
+// 
 
 
 //this a score of how many of the 
 //vital keywords you have in your resume.
-const firstScore = getScores(vitalKeywords,input1)
-
+const firstScore = getScores(vitalKeywords,input1);
+const secondScore = getScores(vitalSoftSkills, input1);
 
 //resumeAndPosting is an array of the words 
 //that repeat on the posting and repeat on the resume with a count of each
 
 const resumeAndPosting = compareText(input1, input) 
 
-// console.log("resumeandposting is: ", resumeAndPosting);
+console.log("resumeandposting is: ", resumeAndPosting);
 // console.log("show database keywords: ", keywords, "vitalKeywords: ", vitalKeywords)
-// console.log("firstScore",firstScore);
 //printarray
 
-  //Dummy for the donut
-  //dummy for the barchart
-  //Dummy for the donut   
+console.log("FIRST SCORE:", firstScore);
+console.log("SECOND SCORE", secondScore);
+
+ 
   //dummy for the barchart   
-  const hardSkillScore = 100;   
-  const softSkillScore = 100;   
+  const hardSkillScore = firstScore;   
+  const softSkillScore =  secondScore;   
   const specificKeywords = 100;   
-  const skillsSum = hardSkillScore + softSkillScore +specificKeywords;   
+  const skillsSum = hardSkillScore + softSkillScore + specificKeywords;   
   const totalScore = 300;      
   //Dummy variables for charts      
-  const match = Math.floor(skillsSum/totalScore * 100) ;   
+  const match = (skillsSum/totalScore * 100).toFixed(2);   
   const unmatch = 100 - match;
   //Dummy variables for charts
 
@@ -57,8 +69,14 @@ const onChange = function(event){
 const onChange1 = function(event){
   setInput1(event.target.value);
 }
-const onClick = function () {
-  setEdit(vitalKeywords)
+
+
+const onClick = function(event) {
+  event.preventDefault();
+
+  setEdit1(hardSkillScore);
+  setEdit3(softSkillScore);
+
 }
 
 const wordTextResume = function(buffer) {
@@ -162,9 +180,9 @@ const onChangeResume = function(event){
 
         <div className="bars_container">
           <span>Primary Key Words</span>
-          <BarChart score={hardSkillScore} />
+          <BarChart score={edit1} />
           <span>Soft Skills Match</span>
-          <BarChart score={softSkillScore} />
+          <BarChart score={edit3} />
           <span>Posting Specific Keywords Match</span>
           <BarChart score={specificKeywords} />
         </div>
