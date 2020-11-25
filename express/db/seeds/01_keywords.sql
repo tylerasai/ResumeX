@@ -532,5 +532,7 @@ values
 ('product'),
 ('python'),
 ('software development'),
-('ruby on rails')
+('ruby on rails'),
+('node'),
+('node js')
 ;

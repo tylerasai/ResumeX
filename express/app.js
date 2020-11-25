@@ -7,6 +7,8 @@ const db = require("./db");
 
 var indexRouter = require("./routes/index");
 var keywordsRouter = require("./routes/keywords");
+var softSkillsRouter = require("./routes/softskills");
+
 const dbHelpers = require('./db/helpers/dbHelpers')(db);
 
 
@@ -21,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use('/api/keywords', keywordsRouter(dbHelpers));
+app.use('/api/softskills', softSkillsRouter(dbHelpers));
 
 
 module.exports = app;
