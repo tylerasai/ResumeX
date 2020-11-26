@@ -32,14 +32,13 @@ const listJobs = jobPostings.map( (jobPosting) => {
               <h5>{jobPosting.company}</h5>
               </div>
               <div>
-              <p dangerouslySetInnerHTML = {{__html:jobPosting.snippet}}></p>
+              <p>{jobPosting.snippet}</p>
               </div>
               <div>
               <p>{jobPosting.location}</p>
               </div>
               <div>
               Posted {moment(new Date(jobPosting.updated)).fromNow()}
-              {/* <p>{jobPosting.updated}</p> */}
               </div>
           </div>
   
