@@ -254,18 +254,26 @@ const jobSpecificTitle = "Job Specific Keywords"
       </div>
 
       <div className="result_table_container">
+        <div>
         <ResultTable 
         vitalKeywords={vitalKeywords}
         resumeRepeatFromPosting={resumeRepeatFromPosting}
         title={hardSkillTitle} />
+        </div>
+        <div>
         <ResultTable 
         vitalKeywords={vitalSoftSkills}
         resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
         title={softSkillTitle} />
-        <ResultTable 
+        </div>
+       
+       <div>
+       <ResultTable 
         vitalKeywords={jobRepeatPosting}
         resumeRepeatFromPosting={jobRepeatResume}
         title={jobSpecificTitle} />
+       </div>
+       
       </div>
 
       <div dangerouslySetInnerHTML={{ __html: highlightedText }}></div>

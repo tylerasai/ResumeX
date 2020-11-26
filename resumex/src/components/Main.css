@@ -136,12 +136,15 @@ textarea:focus {
 .result_table_container {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
+  justify-content: space-between;
   border: rgb(235, 235, 241) 20px solid;
+  flex-direction: column;
+ 
+}
 
-  
+.result_table_container div {
+  width: 700px;
+  margin: 10px;
 }
 .overview {
   display: flex;
@@ -154,7 +157,6 @@ textarea:focus {
 
 
 .MuiTable-stickyHeader {
-  background-color:yellow ;
   font-size: 14;
   color: green;
 }

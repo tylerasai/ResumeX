@@ -40,7 +40,7 @@ export default function ResulTable(props) {
     {
       id: "job",
       label: "Repeats in Job Posting",
-      // minWidth: 50,
+      minWidth: 50,
       align: "right",
       format: (value) => value.toLocaleString("en-US"),
     },
