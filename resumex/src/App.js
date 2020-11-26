@@ -3,6 +3,7 @@ import Main from './components/Main';
 import Nav from './components/Nav';
 import Footer from './components/footer';
 import Home from './components/home';
+import JobPage from './components/jobPosting';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,9 +20,13 @@ function App(props) {
           <Route path="/main">
             <Main />
           </Route>
+          <Route path="/Job-Search">
+            <JobPage />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
+          
         </Switch>
       </div>
       <div><Footer /></div>
