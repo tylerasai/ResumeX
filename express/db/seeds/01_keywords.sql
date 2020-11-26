@@ -517,7 +517,6 @@ values
 ('mysql'),
 ('apache'),
 ('mongodb'),
-('c'),
 ('postgresql'),
 ('techincal skills'),
 ('web application'),
