@@ -5,7 +5,8 @@ import useKeyWords from "../Hooks/KeyWords";
 import useSoftSkills from "../Hooks/SoftSkills";
 import pairMatch from "../Helpers/pairMatch";
 import getScores from "../Helpers/getScores";
-import compareText from "../Helpers/compareText";
+import { getJobSpecificResume, getJobSpecificPosting} from "../Helpers/getJobSpecificWords";
+
 import { extractWordsOnly } from "../Helpers/extrahelp";
 import mammoth from "mammoth";
 import DonutWithText from "../components/DonutWithText";
@@ -32,15 +33,18 @@ export default function Main() {
 
   const vitalKeywords = pairMatch(keywords, jobPosting);
   const vitalSoftSkills = pairMatch(softskills, jobPosting);
+  const jobRepeatPosting = getJobSpecificPosting(jobPosting, vitalKeywords, vitalSoftSkills);
+  const jobRepeatResume = getJobSpecificResume(resume, jobPosting);
+  console.log("JOB REPEAT RESUME FUNCTION",jobRepeatResume);
+  console.log("JOB REPEAT POSTING FUNCTION", jobRepeatPosting)
+
+
   console.log(vitalSoftSkills);
   
   //
   
   //this a score of how many of the
   //vital keywords you have in your resume.
-  const firstScore = getScores(vitalKeywords, resume);
-  const secondScore = getScores(vitalSoftSkills, resume);
-  
   //resumeAndPosting is an array of the words
   //that repeat on the posting and repeat on the resume with a count of each
   
@@ -61,21 +65,25 @@ export default function Main() {
     searchWords,
     textToHighlight,
   });
-
-  const resumeAndPosting = compareText(resume, jobPosting);
-
+  
+  
   // console.log("show database keywords: ", keywords, "vitalKeywords: ", vitalKeywords)
   //printarray
-
-
+  
+  
+  const firstScore = getScores(vitalKeywords, resume);
+  const secondScore = getScores(vitalSoftSkills, resume);
+  const thirdScore = getScores(jobRepeatPosting, resume);
+  
+  
   //dummy for the barchart
   const hardSkillScore = firstScore;
   const softSkillScore = secondScore;
-  const specificKeywords = 100;
+  const specificKeywords = thirdScore;
   const skillsSum = hardSkillScore + softSkillScore + specificKeywords;
   const totalScore = 300;
   //Dummy variables for charts
-  const match = ((skillsSum / totalScore) * 100).toFixed(2);
+  const match = ((skillsSum / totalScore) * 100).toFixed(0);
   const unmatch = 100 - match;
   //Dummy variables for charts
 
@@ -83,6 +91,7 @@ export default function Main() {
 //Titles for the table
 const hardSkillTitle = "Hard Skills"
 const softSkillTitle = "Soft Skills"
+const jobSpecificTitle = "Job Specific Keywords"
 
 
 
@@ -97,7 +106,6 @@ const softSkillTitle = "Soft Skills"
     //set state on the vitalKeywords, firstScore, resumeandPosting
     setEdit(vitalKeywords, vitalSoftSkills);
     setPrimaryScore(hardSkillScore);
-    setResumeAndPosting(resumeAndPosting);
     setHighlightWords(extractWordsOnly(vitalKeywords));
     // console.log("resumeandposting is: ", resumeAndPosting);
     // console.log("show database keywords: ", keywords, "vitalKeywords: ", vitalKeywords)
@@ -255,8 +263,9 @@ const softSkillTitle = "Soft Skills"
         resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
         title={softSkillTitle} />
         <ResultTable 
-        vitalKeywords={vitalKeywords}
-        resumeRepeatFromPosting={resumeRepeatFromPosting} />
+        vitalKeywords={jobRepeatPosting}
+        resumeRepeatFromPosting={jobRepeatResume}
+        title={jobSpecificTitle} />
       </div>
 
       <div dangerouslySetInnerHTML={{ __html: highlightedText }}></div>

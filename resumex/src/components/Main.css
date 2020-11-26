@@ -153,3 +153,8 @@ textarea:focus {
 }
 
 
+.MuiTable-stickyHeader {
+  background-color:yellow ;
+  font-size: 14;
+  color: green;
+}
