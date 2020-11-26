@@ -11,7 +11,6 @@ const pairMatch = function (array, paragraph) {
  
   
   const resultArray = extractKeywords(array)  //this will change the json.data into an array of words ["React","Vue"]
-  
   const paragraphArray = createArrayofText(paragraph) //this will change the text into an array of words ["This","is","an","example"]
   
 
@@ -42,7 +41,6 @@ const pairMatch = function (array, paragraph) {
   }
 
   const wordRank = wordRanker(result) //this is an object from the result array with word and count as key pair values {java:1}
-  
   const rankedArray = ObjectToRankedArray(wordRank) //this creates an ordered array from the wordRank object based on word count
   
 

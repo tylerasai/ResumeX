@@ -3,10 +3,12 @@ const {createArrayofText} =require("./extrahelp")
 const {wordRanker} =require("./extrahelp")
 const {ObjectToRankedArray} =require("./extrahelp")
 
+const array = [["jay", 1] ,["bring bros", 2], ["ho", 1] ,["tyler", 2] ,["bro", 2],["bra",3] ,["bri", 5], ["mom",6], ["dad",6], ["granma",2], ["sher",5], ["adriana lima",4],["brazil", 5]];
+const text = " jay bring bros adriana lima jay";
 
 //this function counts how many times a word repeats and ranks it
 //by order of repitition count in an object with word:count
-export function repeatCount (text) {
+const repeatCount = function (text) {
 
   const inputText = createArrayofText(text) //creates an array of words from the text
 
@@ -24,5 +26,9 @@ export function repeatCount (text) {
     
     return objSorted;
   };
+
+
+  module.exports = repeatCount;
+
 
  

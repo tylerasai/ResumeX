@@ -3,12 +3,12 @@
 form {
   display: flex;
   justify-content: space-between;
-  width: 1000px;
+  width: 1500px;
   
 }
 
 .textarea {
-  width: 450px;
+  width: 700px;
   height: 450px;
   padding: 20px;
   background-color:white;
@@ -64,7 +64,7 @@ form {
 .results_container {
   display: flex;
   justify-content: center;
-  border: rgb(108, 108, 197) 20px solid;
+  border: rgb(235, 235, 241) 20px solid;
   padding: 20px;
 }
 
@@ -123,7 +123,38 @@ textarea {
   border: none;
 }
 
+textarea:focus {
+  background-color: rgb(231, 224, 224);
+  border: none;
+}
+
 .input {
   display: flex;
   justify-content: center;
+}
+
+.result_table_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  border: rgb(235, 235, 241) 20px solid;
+
+  
+}
+.overview {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  background-color: rgb(235, 235, 241);
+  width: 100%;
+  margin-bottom: -30px;
+}
+
+
+.MuiTable-stickyHeader {
+  background-color:yellow ;
+  font-size: 14;
+  color: green;
 }
