@@ -152,9 +152,11 @@ textarea:focus {
   margin-bottom: -30px;
 }
 
-
-.MuiTable-stickyHeader {
+.red {
+  background-color:red;
+}
+/* .MuiTable-stickyHeader {
   background-color:yellow ;
   font-size: 14;
   color: green;
-}
+} */
