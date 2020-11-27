@@ -2,14 +2,17 @@
   /* editing the tweet contatiner */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-self: center;
+  align-items: center;
   margin-top: 1em;
   margin-bottom: 1em;
-  width: 100%;
+  width: 700px;
   border-top: 2px solid gray;
   border-left: 2px solid gray;
   border-right: 2px solid gray;
   border-bottom: 2px solid gray;
+  color: rgb(77, 75, 75);
+  background-color: rgb(223, 185, 116);
 }
 
 .items-inside {
@@ -19,12 +22,30 @@
   margin-left: 1em;
 }
 .job-container:hover h5 {
-  color: gray;
+  color: black;
 }
+
+.job-container:hover p {
+  color: black;
+}
+
 
 .job-container:hover {
 opacity: 100%;
 box-shadow: 5px 10px gray;
+}
+
+.listing_container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(196, 199, 189);
+}
+
+.go_back_resume {
+  margin-top: 15px;
+  font-size: 20px;
 }
 
 

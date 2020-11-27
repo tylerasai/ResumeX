@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import "./Main.css";
 import useKeyWords from "../Hooks/KeyWords";
@@ -14,9 +15,12 @@ import document_logo from "../assets/img/document_logo.svg";
 
 import ResultTable from "./ResultTable";
 import ToggleSwitch from "../components/ToggleSwitch";
+import useJobPostings from "../Hooks/jobComponents";
 
-import { getJobSpecificResume, getJobSpecificPosting} from "../Helpers/getJobSpecificWords";
-
+import {
+  getJobSpecificResume,
+  getJobSpecificPosting,
+} from "../Helpers/getJobSpecificWords";
 
 export default function Main() {
   const [jobPosting, setJobposting] = useState("");
@@ -29,19 +33,26 @@ export default function Main() {
   const [hiLightVitalSoftSkills, setHiLightVitalSoftSkills] = useState([""]);
   const { keywords } = useKeyWords();
   const { softskills } = useSoftSkills();
+  const history = useHistory();
+
+  //Cick job search - calling
 
   //vitalKeywords is an array with the same words of the database and jobposting
   //for hardskills
 
   const vitalKeywords = pairMatch(keywords, jobPosting);
 
-  //vitalSoftSkills is an array with the same words in the database and jobposting for 
+  //vitalSoftSkills is an array with the same words in the database and jobposting for
   //soft skills
 
   const vitalSoftSkills = pairMatch(softskills, jobPosting);
 
   //jobspecific words is words that repeats most in the job posting
-  const jobRepeatPosting = getJobSpecificPosting(jobPosting, vitalKeywords, vitalSoftSkills);
+  const jobRepeatPosting = getJobSpecificPosting(
+    jobPosting,
+    vitalKeywords,
+    vitalSoftSkills
+  );
   const jobRepeatResume = getJobSpecificResume(resume, jobPosting);
 
   //firstScore and Second score is for the bargraph to rank how many of the keywords for
@@ -53,16 +64,8 @@ export default function Main() {
   //resumeAndPosting is an array of the words
   //that repeat on the posting and repeat on the resume with a count of each
 
-
   const resumeRepeatFromPosting = pairMatch(keywords, resume);
   const resumeRepeatSoftSkillsPosting = pairMatch(softskills, resume);
-
-
-
-
-
-
-
 
   //dummy for the barchart
   const hardSkillScore = firstScore;
@@ -75,12 +78,10 @@ export default function Main() {
   const unmatch = 100 - match;
   //Dummy variables for charts
 
-
   //Titles for the table
   const hardSkillTitle = "Hard Skills";
   const softSkillTitle = "Soft Skills";
-  const jobSpecificTitle = "Job Specific Skills"
-
+  const jobSpecificTitle = "Job Specific Skills";
 
   const onChange = function (event) {
     setJobposting(event.target.value);
@@ -96,7 +97,6 @@ export default function Main() {
 
     setHiLightHardSkills(extractWordsOnly(vitalKeywords));
     setHiLightVitalSoftSkills(extractWordsOnly(vitalSoftSkills));
-
   };
 
   const wordTextResume = function (buffer) {
@@ -147,9 +147,27 @@ export default function Main() {
     reader.readAsArrayBuffer(fileData);
   };
 
+  //Job Search component
+  const jobSearchKeyword = extractWordsOnly(resumeRepeatFromPosting)
+    .slice(0, 5)
+    .toString();
 
+  console.log("JOB SEARCH KEYWORDS", jobSearchKeyword);
 
+  const [countrySelected, setCountrySelected] = useState("");
 
+  const onClick_JobSearch = function (event) {
+    // event.preventDefault();
+    //set state on the vitalKeywords, firstScore, resumeandPosting
+    setCountrySelected(event.target.value);
+  };
+
+  const usePrintJobPosting = useJobPostings(jobSearchKeyword, countrySelected);
+  console.log("USER PRINT JOB POSTING", usePrintJobPosting);
+
+  const moveToJobSearch = () => {
+    history.push({ pathname: "/job-search", data: usePrintJobPosting });
+  };
 
   return (
     <>
@@ -211,11 +229,9 @@ export default function Main() {
         >
           Submit
         </button>
-
-
-     
       </div>
-      <h1 className="overview">Summary</h1><br></br>
+      <h1 className="overview">Summary</h1>
+      <br></br>
       <div className="results_container">
         <DonutWithText match={match} unmatch={unmatch} />
 
@@ -230,37 +246,49 @@ export default function Main() {
       </div>
 
       <div className="table_highlight_container">
-     
-
-      <div className="result_table_container">
-        <ResultTable
-          vitalKeywords={vitalKeywords}
-          resumeRepeatFromPosting={resumeRepeatFromPosting}
-          title={hardSkillTitle} />
-        <ResultTable
-          vitalKeywords={vitalSoftSkills}
-          resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
-          title={softSkillTitle} />
-        <ResultTable
-          vitalKeywords={jobRepeatPosting}
-          resumeRepeatFromPosting={jobRepeatResume}
-          title={jobSpecificTitle} />
-      </div>
-
-      <div className="highlight_toggle">
-      
-      <ToggleSwitch
-          hiLightHardSkills={hiLightHardSkills}
-          hiLightVitalSoftSkills={hiLightVitalSoftSkills}
-          resume={resume}
+        <div className="result_table_container">
+          <ResultTable
+            vitalKeywords={vitalKeywords}
+            resumeRepeatFromPosting={resumeRepeatFromPosting}
+            title={hardSkillTitle}
           />
+          <ResultTable
+            vitalKeywords={vitalSoftSkills}
+            resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
+            title={softSkillTitle}
+          />
+          <ResultTable
+            vitalKeywords={jobRepeatPosting}
+            resumeRepeatFromPosting={jobRepeatResume}
+            title={jobSpecificTitle}
+          />
+        </div>
 
-      </div>
-      </div>
-      
+        <div className="highlight_toggle">
+          <div>
+            <ToggleSwitch
+              hiLightHardSkills={hiLightHardSkills}
+              hiLightVitalSoftSkills={hiLightVitalSoftSkills}
+              resume={resume}
+            />
+          </div>
 
+          <div className="job_search_button">
+            <button onClick={moveToJobSearch}>Job Search</button>
+
+            <select onChange={onClick_JobSearch}>
+              <option value="">
+              </option>
+
+              <option value="usa">
+                USA
+              </option>
+              <option value="canada">Canada</option>
+              <option value="uk">UK</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
-
-

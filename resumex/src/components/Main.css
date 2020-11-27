@@ -149,6 +149,9 @@ textarea:focus {
 .result_table_container div {
   margin: 2px;
 }
+
+.result_table_container div 
+
 .overview {
   display: flex;
   justify-content: center;
@@ -170,6 +173,9 @@ textarea:focus {
   width: 900px;
   margin-left: 40px;
   text-align: justify;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
 }
 

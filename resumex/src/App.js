@@ -20,9 +20,8 @@ function App(props) {
           <Route path="/main">
             <Main />
           </Route>
-          <Route path="/Job-Search">
-            <JobPage />
-          </Route>
+          <Route path="/Job-Search" render={ (props) => <JobPage /> }/>
+           
           <Route path="/">
             <Home />
           </Route>
