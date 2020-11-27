@@ -40,7 +40,7 @@ const wordRanker = function (array) {
 }
 
 const ObjectToRankedArray = function (wordRank) {
-  const wordExclusions = ["and", "the","their", "is", "but", "s","a", "or", "job", "as", "be", "by", "for", "from", "in", " ", "  ", "", "to", "of", "an", "at", "on", "with", "that", "uses", "are", "who", "you", "it", "us", "we", "about", "from", "both", "will", "can", "our","their"];
+  const wordExclusions = ["and", "the","their", "is", "but", "s","a", "or", "job", "as", "be", "by", "for", "from", "in",", ", "  ", "", "to", "of", "an", "at", "on", "with", "that", "uses", "are", "who", "you", "it", "us", "we", "about", "from", "both", "will", "can", "our","their"];
   const sortable = [];
   for (let word in wordRank) {
     if(!wordExclusions.includes(word))

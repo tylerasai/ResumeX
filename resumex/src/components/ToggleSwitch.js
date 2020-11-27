@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./ToggleSwitch.css";
 import { findAll } from "highlight-words-core";
-import { red } from "@material-ui/core/colors";
 function ToggleSwitch(props) {
   const hiLightHardSkills  = props.hiLightHardSkills;
   const hiLightVitalSoftSkills = props.hiLightVitalSoftSkills
@@ -33,9 +32,9 @@ function ToggleSwitch(props) {
     const text = textToHighlight.substr(start, end - start);
     let color = ""
     if(isToggled) {
-      color = "yellow"
+      color = "#43abc9"
     } else {
-      color = "red"
+      color = "#f26d21"
     }
     if (highlight) {
       
@@ -53,8 +52,8 @@ function ToggleSwitch(props) {
       <input type="checkbox" checked={isToggled} onChange={onToggle} />
       <span className="switch" />
     </label>
-  {isToggled ? <h1>Hard Skills</h1> : <h1>Soft Skills</h1>}
-    <h4 dangerouslySetInnerHTML={{ __html: highlightedText }}></h4>
+  {isToggled ? <h3>Hard Skills</h3> : <h3>Soft Skills</h3>}
+    <p dangerouslySetInnerHTML={{ __html: highlightedText }}></p>
     </>
   );
 }

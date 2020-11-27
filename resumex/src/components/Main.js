@@ -80,7 +80,6 @@ export default function Main() {
   };
   const onChange1 = function (event) {
     setResume(event.target.value);
-    setResumeLoaded(true);
   };
   const onClick = function (event) {
     event.preventDefault();
@@ -207,11 +206,7 @@ export default function Main() {
         </button>
 
 
-        <ToggleSwitch
-          hiLightHardSkills={hiLightHardSkills}
-          hiLightVitalSoftSkills={hiLightVitalSoftSkills}
-          resume={resume}
-        />
+     
       </div>
       <h1 className="overview">Summary</h1><br></br>
       <div className="results_container">
@@ -227,6 +222,9 @@ export default function Main() {
         </div>
       </div>
 
+      <div className="table_highlight_container">
+     
+
       <div className="result_table_container">
         <ResultTable
           vitalKeywords={vitalKeywords}
@@ -240,6 +238,17 @@ export default function Main() {
           vitalKeywords={vitalKeywords}
           resumeRepeatFromPosting={resumeRepeatFromPosting} />
       </div>
+
+      <div className="highlight_toggle">
+      <ToggleSwitch
+          hiLightHardSkills={hiLightHardSkills}
+          hiLightVitalSoftSkills={hiLightVitalSoftSkills}
+          resume={resume}
+        />
+
+      </div>
+      </div>
+      
 
     </>
   );
