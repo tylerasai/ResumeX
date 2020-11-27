@@ -2,7 +2,8 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 
-export default function useJobPostings() {
+export default function useJobPostings(countrySelected) {
+  console.log("props from country", countrySelected)
 
   const [ jobPostings, setJobPosting ] = useState([]);
   const first = "css";
@@ -13,7 +14,6 @@ export default function useJobPostings() {
    
       axios.post("https://jooble.org/api/3b20f6ec-4561-4835-aa1d-9247156b228d", {
         "keywords": `${first}, ${second}, ${third}`,
-        "location": "canada",
         "page": "1"
      })
     
