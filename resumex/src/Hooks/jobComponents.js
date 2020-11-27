@@ -13,7 +13,7 @@ export default function useJobPostings() {
    
       axios.post("https://jooble.org/api/3b20f6ec-4561-4835-aa1d-9247156b228d", {
         "keywords": `${first}, ${second}, ${third}`,
-        "location": "canada",
+        "location": "Canada",
         "page": "1"
      })
     
