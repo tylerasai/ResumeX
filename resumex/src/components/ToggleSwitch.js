@@ -48,12 +48,16 @@ function ToggleSwitch(props) {
   
   return (
     <>
+  {isToggled ? <h3>Hard Skills</h3> : <h3>Soft Skills</h3>} 
+      <p className="description">Toggle between the hard and soft skill keywords</p><br></br>
     <label className="toggle-switch">
-      <input type="checkbox" checked={isToggled} onChange={onToggle} />
+      <input type="checkbox" checked={isToggled} onChange={onToggle} /> 
+
       <span className="switch" />
     </label>
-  {isToggled ? <h3>Hard Skills</h3> : <h3>Soft Skills</h3>}
+    <hr></hr>
     <p dangerouslySetInnerHTML={{ __html: highlightedText }}></p>
+    
     </>
   );
 }

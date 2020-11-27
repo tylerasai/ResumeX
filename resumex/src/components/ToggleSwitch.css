@@ -10,7 +10,7 @@
 .toggle-switch .switch {
   position: absolute;
   cursor: pointer;
-  background-color: rgb(83, 130, 216);
+  background-color: #f26d21;
   border-radius: 25px;
   top: 0;
   right: 0;
@@ -25,14 +25,22 @@
   top: 2px;
   width: 21px;
   height: 21px;
-  background-color: rgb(22, 89, 212);
+  background-color: black;
   border-radius: 50%;
   transition: transform 0.3s ease;
 }
 .toggle-switch input[type="checkbox"]:checked + .switch::before {
   transform: translateX(25px);
-  background-color: #6699cc;
+  background-color: black;
 }
 .toggle-switch input[type="checkbox"]:checked + .switch {
-  background-color: #7369ce;
+  background-color: #43abc9;
+}
+
+.description {
+  color: grey;
+}
+
+hr {
+  border-top: 5px solid rgb(196, 181, 181);
 }

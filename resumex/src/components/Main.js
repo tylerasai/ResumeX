@@ -15,6 +15,9 @@ import document_logo from "../assets/img/document_logo.svg";
 import ResultTable from "./ResultTable";
 import ToggleSwitch from "../components/ToggleSwitch";
 
+import { getJobSpecificResume, getJobSpecificPosting} from "../Helpers/getJobSpecificWords";
+
+
 export default function Main() {
   const [jobPosting, setJobposting] = useState("");
   const [resume, setResume] = useState("");
@@ -36,6 +39,10 @@ export default function Main() {
   //soft skills
 
   const vitalSoftSkills = pairMatch(softskills, jobPosting);
+
+  //jobspecific words is words that repeats most in the job posting
+  const jobRepeatPosting = getJobSpecificPosting(jobPosting, vitalKeywords, vitalSoftSkills);
+  const jobRepeatResume = getJobSpecificResume(resume, jobPosting);
 
   //firstScore and Second score is for the bargraph to rank how many of the keywords for
   //hardskills and softskills you got
@@ -72,7 +79,7 @@ export default function Main() {
   //Titles for the table
   const hardSkillTitle = "Hard Skills";
   const softSkillTitle = "Soft Skills";
-
+  const jobSpecificTitle = "Job Specific Skills"
 
 
   const onChange = function (event) {
@@ -235,16 +242,18 @@ export default function Main() {
           resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
           title={softSkillTitle} />
         <ResultTable
-          vitalKeywords={vitalKeywords}
-          resumeRepeatFromPosting={resumeRepeatFromPosting} />
+          vitalKeywords={jobRepeatPosting}
+          resumeRepeatFromPosting={jobRepeatResume}
+          title={jobSpecificTitle} />
       </div>
 
       <div className="highlight_toggle">
+      
       <ToggleSwitch
           hiLightHardSkills={hiLightHardSkills}
           hiLightVitalSoftSkills={hiLightVitalSoftSkills}
           resume={resume}
-        />
+          />
 
       </div>
       </div>
