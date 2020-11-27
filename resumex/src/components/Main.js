@@ -11,67 +11,48 @@ import mammoth from "mammoth";
 import DonutWithText from "../components/DonutWithText";
 import BarChart from "../components/BarChart";
 import document_logo from "../assets/img/document_logo.svg";
-import { findAll } from "highlight-words-core";
-import ResultTable from "./ResultTable";
 
+import ResultTable from "./ResultTable";
+import ToggleSwitch from "../components/ToggleSwitch";
 
 export default function Main() {
   const [jobPosting, setJobposting] = useState("");
   const [resume, setResume] = useState("");
   const [edit, setEdit] = useState([""]);
   const [PrimaryScore, setPrimaryScore] = useState([""]);
-  const [resumeAndPostingComp, setResumeAndPosting] = useState([""]);
+
   const [hiLightHardSkills, setHiLightHardSkills] = useState([""]);
-  const [resumeLoaded, setResumeLoaded] = useState(false);
+
   const [hiLightVitalSoftSkills, setHiLightVitalSoftSkills] = useState([""]);
   const { keywords } = useKeyWords();
   const { softskills } = useSoftSkills();
 
   //vitalKeywords is an array with the same words of the database and jobposting
   //for hardskills
-  
+
   const vitalKeywords = pairMatch(keywords, jobPosting);
-  
+
   //vitalSoftSkills is an array with the same words in the database and jobposting for 
   //soft skills
-  
+
   const vitalSoftSkills = pairMatch(softskills, jobPosting);
-  
-  //
-  
-  
+
+  //firstScore and Second score is for the bargraph to rank how many of the keywords for
+  //hardskills and softskills you got
+
   const firstScore = getScores(vitalKeywords, resume);
   const secondScore = getScores(vitalSoftSkills, resume);
-  
+
   //resumeAndPosting is an array of the words
   //that repeat on the posting and repeat on the resume with a count of each
-  
-  
 
-  
-  
+
   const resumeRepeatFromPosting = pairMatch(keywords, resume);
   const resumeRepeatSoftSkillsPosting = pairMatch(softskills, resume);
-  
-  const textToHighlight = resume;
 
-  const searchWords = hiLightVitalSoftSkills.concat(hiLightHardSkills);
-  const chunks = findAll({
-    searchWords,
-    textToHighlight,
-  });
 
-  const highlightedText = chunks
-  .map((chunk) => {
-    const { end, highlight, start } = chunk;
-    const text = textToHighlight.substr(start, end - start);
-    if (highlight) {
-      return `<mark style = "background-color: red">${text}</mark>`;
-    } else {
-      return text;
-    }
-  })
-  .join("");
+
+
 
 
 
@@ -87,10 +68,10 @@ export default function Main() {
   const unmatch = 100 - match;
   //Dummy variables for charts
 
-  
-//Titles for the table
-const hardSkillTitle = "Hard Skills"
-const softSkillTitle = "Soft Skills"
+
+  //Titles for the table
+  const hardSkillTitle = "Hard Skills";
+  const softSkillTitle = "Soft Skills";
 
 
 
@@ -103,15 +84,13 @@ const softSkillTitle = "Soft Skills"
   };
   const onClick = function (event) {
     event.preventDefault();
-    //set state on the vitalKeywords, firstScore, resumeandPosting
+
     setEdit(vitalKeywords, vitalSoftSkills);
     setPrimaryScore(hardSkillScore);
-    // setResumeAndPosting(resumeAndPosting);
+
     setHiLightHardSkills(extractWordsOnly(vitalKeywords));
     setHiLightVitalSoftSkills(extractWordsOnly(vitalSoftSkills));
-    // console.log("resumeandposting is: ", resumeAndPosting);
-    // console.log("show database keywords: ", keywords, "vitalKeywords: ", vitalKeywords)
-    // console.log("firstScore",firstScore);
+
   };
 
   const wordTextResume = function (buffer) {
@@ -163,34 +142,8 @@ const softSkillTitle = "Soft Skills"
   };
 
 
-  
-  // const Example = () => {
-  //   const [value, setValue] = useState("Here's a blueberry. There's a strawberry. Surprise, it's a banananana! <h1>hello</h1>");
-  //   const highlight = [
-      
-  //       {
-  //         highlight: 'strawberry',
-  //         className: 'red'
-  //       },
-  //       {
-  //         highlight: 'blueberry',
-  //         className: 'blue'
-  //       },
-  //       {
-  //         highlight: /ba(na)*/gi,
-  //         className: 'yellow'
-  //       }
-  //   ]
-  //   return (
-  //     <HighlightWithinTextarea 
-  //       value={value}
-  //       highlight={highlight}
-  //       onChange= {event => setValue(event.target.value)}
-        
-  //     />
-  //   );
-  // };
-  
+
+
 
   return (
     <>
@@ -252,8 +205,13 @@ const softSkillTitle = "Soft Skills"
         >
           Submit
         </button>
-        <h1>Hardskill Keywords</h1>
-        <h4 dangerouslySetInnerHTML={{ __html: highlightedText }}></h4>
+
+
+        <ToggleSwitch
+          hiLightHardSkills={hiLightHardSkills}
+          hiLightVitalSoftSkills={hiLightVitalSoftSkills}
+          resume={resume}
+        />
       </div>
       <h1 className="overview">Summary</h1><br></br>
       <div className="results_container">
@@ -270,21 +228,19 @@ const softSkillTitle = "Soft Skills"
       </div>
 
       <div className="result_table_container">
-        <ResultTable 
-        vitalKeywords={vitalKeywords}
-        resumeRepeatFromPosting={resumeRepeatFromPosting}
-        title={hardSkillTitle} />
-        <ResultTable 
-        vitalKeywords={vitalSoftSkills}
-        resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
-        title={softSkillTitle} />
-        <ResultTable 
-        vitalKeywords={vitalKeywords}
-        resumeRepeatFromPosting={resumeRepeatFromPosting} />
+        <ResultTable
+          vitalKeywords={vitalKeywords}
+          resumeRepeatFromPosting={resumeRepeatFromPosting}
+          title={hardSkillTitle} />
+        <ResultTable
+          vitalKeywords={vitalSoftSkills}
+          resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
+          title={softSkillTitle} />
+        <ResultTable
+          vitalKeywords={vitalKeywords}
+          resumeRepeatFromPosting={resumeRepeatFromPosting} />
       </div>
-    
-      {/* <Example/> */}
-      {/* <div dangerouslySetInnerHTML={{ __html: highlightedText }}></div> */}
+
     </>
   );
 }

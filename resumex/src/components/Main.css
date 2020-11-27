@@ -155,6 +155,10 @@ textarea:focus {
 .red {
   background-color:red;
 }
+
+.yellow {
+  background-color: yellow;
+}
 /* .MuiTable-stickyHeader {
   background-color:yellow ;
   font-size: 14;
