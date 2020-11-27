@@ -31,8 +31,11 @@ export default function Main() {
   const [hiLightHardSkills, setHiLightHardSkills] = useState([""]);
 
   const [hiLightVitalSoftSkills, setHiLightVitalSoftSkills] = useState([""]);
+  const [submitState, setSubmitState] = useState(false);
+
   const { keywords } = useKeyWords();
   const { softskills } = useSoftSkills();
+  
   const history = useHistory();
 
   //Cick job search - calling
@@ -97,6 +100,7 @@ export default function Main() {
 
     setHiLightHardSkills(extractWordsOnly(vitalKeywords));
     setHiLightVitalSoftSkills(extractWordsOnly(vitalSoftSkills));
+    setSubmitState(true)
   };
 
   const wordTextResume = function (buffer) {
@@ -232,7 +236,9 @@ export default function Main() {
       </div>
       <h1 className="overview">Summary</h1>
       <br></br>
+      {submitState ? <div>
       <div className="results_container">
+        
         <DonutWithText match={match} unmatch={unmatch} />
 
         <div className="bars_container">
@@ -251,17 +257,17 @@ export default function Main() {
             vitalKeywords={vitalKeywords}
             resumeRepeatFromPosting={resumeRepeatFromPosting}
             title={hardSkillTitle}
-          />
+            />
           <ResultTable
             vitalKeywords={vitalSoftSkills}
             resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
             title={softSkillTitle}
-          />
+            />
           <ResultTable
             vitalKeywords={jobRepeatPosting}
             resumeRepeatFromPosting={jobRepeatResume}
             title={jobSpecificTitle}
-          />
+            />
         </div>
 
         <div className="highlight_toggle">
@@ -270,7 +276,7 @@ export default function Main() {
               hiLightHardSkills={hiLightHardSkills}
               hiLightVitalSoftSkills={hiLightVitalSoftSkills}
               resume={resume}
-            />
+              />
           </div>
 
           <div className="job_search_button">
@@ -287,8 +293,12 @@ export default function Main() {
               <option value="uk">UK</option>
             </select>
           </div>
+        
         </div>
+      
       </div>
+              </div> : <div>Please input resume and job posting</div>}
+    
     </>
   );
 }
