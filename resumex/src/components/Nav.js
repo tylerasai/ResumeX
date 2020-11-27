@@ -30,6 +30,16 @@ export default function Nav() {
                 About
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/main">
+                Main
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/job-search">
+                Job Search
+              </a>
+            </li>
           </ul>
         </div>
       </nav>{" "}

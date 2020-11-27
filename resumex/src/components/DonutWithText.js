@@ -14,7 +14,7 @@ Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
 
     var fontSize = (height / 114).toFixed(2);
     ctx.font = fontSize + "em sans-serif";
-    ctx.fillStyle = "green";
+    ctx.fillStyle = "white";
     ctx.textBaseline = "middle";
 
     //Showing the matched value (just one of the label's value)
@@ -74,8 +74,6 @@ const data = {
 		`${loadColor(`${props.match}`)}`,
 		'#d3d3d3'
     
-    
-    
     ],
     borderWidth: 0
 		
@@ -86,7 +84,7 @@ const data = {
   
   return (
       <div className="match_rate_container">
-        <p>MATCH RATE</p>
+        <h3>Match Rate</h3>
         <Doughnut data={data} options={options} />
       </div>
     );

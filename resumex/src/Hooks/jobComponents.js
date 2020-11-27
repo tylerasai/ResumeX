@@ -2,18 +2,20 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 
-export default function useJobPostings(countrySelected) {
-  console.log("props from country", countrySelected)
+export default function useJobPostings(keywords, location) {
+
+  console.log("THIS IS KEYWORDS SHER!",keywords);
+  console.log("THIS IS LOCACIOON", location);
 
   const [ jobPostings, setJobPosting ] = useState([]);
-  const first = "css";
-  const second = "java";
-  const third = "javascript"
+
+ 
   useEffect(() => {
  
    
-      axios.post("https://jooble.org/api/3b20f6ec-4561-4835-aa1d-9247156b228d", {
-        "keywords": `${first}, ${second}, ${third}`,
+      axios.post("https://jooble.org/api/d82cf18f-efe3-466b-bdf9-2cc38d167951", {
+        "keywords": keywords,
+        "location": location,
         "page": "1"
      })
     
@@ -25,7 +27,7 @@ export default function useJobPostings(countrySelected) {
     // .then(setJobPosting);
   
 
-  }, [])
+  }, [keywords, location])
 
   return { jobPostings };
 }

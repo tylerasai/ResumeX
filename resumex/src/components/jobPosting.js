@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useLocation} from 'react-router-dom';
 
 import './jobPosting.css'
 import useJobPostings from '../Hooks/jobComponents';
@@ -6,17 +7,15 @@ import moment from 'moment';
 
 
 
-const JobPage = () => {
+const JobPage = (props) => {
 
-    const [countrySelected, setCountrySelected] = useState("");
-    
-    const onClick = function (event) {
-        // event.preventDefault();
-        //set state on the vitalKeywords, firstScore, resumeandPosting
-        setCountrySelected(event.target.value)
 
-    };
-const {jobPostings} = useJobPostings(countrySelected);
+const location = useLocation();
+console.log("PROPS DOT LOCATION",location.data);
+
+const jobPostings = location.data.jobPostings;
+console.log(jobPostings);
+
 const listJobs = jobPostings.map( (jobPosting) => {
     return (
       <div id="job-container">
@@ -46,15 +45,11 @@ const listJobs = jobPostings.map( (jobPosting) => {
 }
 
 )
-console.log("job posting:", jobPostings);
-  return (
-      <div>
-  <select onChange={onClick}>
-  <option value="usa">USA</option>
-  <option value="canada">Canada</option>
-  <option value="uk">UK</option>
-</select>
-  <div>{listJobs}</div>
+// console.log("job posting:", jobPostings);
+return (
+  <div className="listing_container">
+    <div className="go_back_resume"><a href="/main">Go Back to Main Page</a></div>
+    <div className="job_listing">{listJobs}</div>
   </div>
   )
 };

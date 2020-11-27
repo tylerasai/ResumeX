@@ -36,18 +36,18 @@ export default function ResulTable(props) {
   const title = props.title;
 
   const columns = [
-    { id: "keywords", label: "Keywords", minWidth: 170 },
+    { id: "keywords", label: "Keywords", align: "left" },
     {
       id: "job",
       label: "Repeats in Job Posting",
       // minWidth: 50,
-      align: "right",
+      align: "center",
       format: (value) => value.toLocaleString("en-US"),
     },
     {
       id: "resume",
       label: "Repeats in Resume",
-      align: "right",
+      align: "center",
       format: (value) => value.toLocaleString("en-US"),
     },
   ];

@@ -4,9 +4,8 @@
   height: auto;
 }
 
-.match_rate_container p {
-  color: green;
-  font-weight: 900;
-  font-size: 1.3em;
+.match_rate_container h3 {
+  color: #c58364;
   margin-bottom: 20px;
+  font-weight: 900;
 }

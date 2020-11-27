@@ -3,11 +3,21 @@ a,p,h1,h2,h3,h4,ul {
 	padding: 0;
 }
 
+.section-services .header-section .title {
+	font-size: 100px;
+}
+
+.section-services .header-section .description {
+	font-size: 50px;
+}
+
+
+
 .section-services {
 	padding-top: 110px;
 	padding-bottom: 120px;
 	font-family: "Poppins", sans-serif;
-	background-color: rgb(128, 123, 123);
+	background-color: rgb(0, 0, 0);
 	color: #fff;
 }
 
@@ -50,13 +60,13 @@ a,p,h1,h2,h3,h4,ul {
 }
 
 .section-services .header-section .description {
-	color: #464649;
+	color: #ffffff;
 }
 
 .section-services .single-service {
 	margin-top: 40px;
 	background-color: #434444;
-	box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .section-services .single-service .part-1 {
@@ -97,4 +107,8 @@ a,p,h1,h2,h3,h4,ul {
 .section-services .single-service .part-2 a i {
 	margin-right: 10px;
 	color: #f70037;
+}
+
+.home_image {
+	text-align: center;
 }

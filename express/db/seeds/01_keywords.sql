@@ -143,7 +143,6 @@ values
 ('technical support'),
 ('frameworks'),
 ('performance management'),
-('BI'),
 ('fashion'),
 ('HTML'),
 ('publications'),
