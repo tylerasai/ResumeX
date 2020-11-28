@@ -113,7 +113,7 @@ export default function Main() {
         const text = result.value; // The raw text
         setResume(text);
       })
-      .done();
+       .done();
   };
 
   const onChangeResume = function (event) {
@@ -121,16 +121,18 @@ export default function Main() {
 
     const reader = new FileReader();
     const fileData = event.target.files[0];
-    reader.onloadend = (event) => {
-      wordTextResume(event.target.result);
-    }; //triggers when the reader stops reading file
-
-    reader.readAsArrayBuffer(fileData);
+    if (fileData.name.includes(".docx")) {
+      reader.onloadend = (event) => {
+        wordTextJob(event.target.result);
+      }; //triggers when the reader stops reading file
+        reader.readAsArrayBuffer(fileData);
+    } else {
+      alert("Upload a docx file!");
+    }
   };
 
   const wordTextJob = function (buffer) {
     //reads the file from job and changes it to text
-
     mammoth
       .extractRawText({ arrayBuffer: buffer })
       .then(function (result) {
@@ -144,11 +146,17 @@ export default function Main() {
     //takes the file and reads the file from buffer of array
     const reader = new FileReader();
     const fileData = event.target.files[0];
-    reader.onloadend = (event) => {
-      wordTextJob(event.target.result);
-    }; //triggers when the reader stops reading file
-
-    reader.readAsArrayBuffer(fileData);
+    
+    if (fileData.name.includes(".docx")) {
+      reader.onloadend = (event) => {
+        wordTextJob(event.target.result);
+      }; //triggers when the reader stops reading file
+        reader.readAsArrayBuffer(fileData);
+    } else {
+      alert("Upload a docx file!");
+    }
+    
+    
   };
 
   //Job Search component
@@ -257,11 +265,14 @@ export default function Main() {
             resumeRepeatFromPosting={resumeRepeatFromPosting}
             title={hardSkillTitle}
             />
+            <br></br>
           <ResultTable
             vitalKeywords={vitalSoftSkills}
             resumeRepeatFromPosting={resumeRepeatSoftSkillsPosting}
             title={softSkillTitle}
             />
+                        <br></br>
+
           <ResultTable
             vitalKeywords={jobRepeatPosting}
             resumeRepeatFromPosting={jobRepeatResume}
@@ -279,10 +290,9 @@ export default function Main() {
           </div>
 
           <div className="job_search_container">
-
             <div className="location_dropdown">
               <select onChange={onClick_JobSearch}>
-              <option value="">
+              <option className="location_option" value="location">Choose location
               </option>
 
                 <option value="usa">
