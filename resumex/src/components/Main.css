@@ -135,6 +135,7 @@ textarea:focus {
 
 .table_highlight_container {
   display: flex;
+  justify-content: center;
 }
 
 .result_table_container {
@@ -144,20 +145,21 @@ textarea:focus {
   flex-direction: column;
   align-items: center;
   width: 700px;
-  
 }
 
 .result_table_container div {
-  margin: 2px;
+  margin: 1px;
 }
 
-.result_table_container div 
-
-
-
-.table_highlight_container {
+.result_table_container div .table_highlight_container {
   display: flex;
   justify-content: center;
+}
+
+.result_table_container .MuiTableCell-root {
+  padding: 7px;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .highlight_toggle {
@@ -168,17 +170,15 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .please_input {
-  background-color:black;
+  background-color: black;
   color: orange;
   margin-top: -30px;
   height: 100px;
   padding: 20px;
   font-size: 30px;
-  
 }
 
 .job_search_container {
@@ -186,12 +186,11 @@ textarea:focus {
   justify-content: center;
   flex-direction: row;
   margin-top: 20px;
- 
 }
 
 .job_search_button {
   width: 120px;
-  
+  margin-bottom: 50px;
 }
 
 .location_dropdown {
@@ -202,6 +201,11 @@ textarea:focus {
 .actual_jobSearch_button {
   background-color: black;
   color: white;
+}
+
+select {
+  -webkit-appearance: menulist-button;
+  color: black;
 }
 
 /* width */
@@ -222,10 +226,4 @@ textarea:focus {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-
-.MuiTable-stickyHeader {
-  font-size: 14;
-  color: green;
 }
