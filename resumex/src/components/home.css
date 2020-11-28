@@ -5,7 +5,17 @@ a,p,h1,h2,h3,h4,ul {
 
 .section-services .header-section .title {
 	font-size: 100px;
+
 }
+
+.section-services .header-section a{
+	color: white;
+}
+.section-services .header-section a:hover{
+	color: white;
+	text-decoration: none;
+}
+
 
 .section-services .header-section .description {
 	font-size: 50px;

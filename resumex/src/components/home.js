@@ -36,8 +36,8 @@ export default function Home(props) {
             <div class="row justify-content-center text-center">
               <div class="col-md-10 col-lg-8">
                 <div class="header-section">
-                  <h2 class="title">
-                    Resume<span>X</span>
+                  <h2 class="title"> <a href="/main">Resume<span>X</span></a>
+                    
                   </h2>
                   <p class="description">Your Tech Job Expert.</p>
                 </div>

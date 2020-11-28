@@ -6,7 +6,7 @@ function ToggleSwitch(props) {
   const hiLightVitalSoftSkills = props.hiLightVitalSoftSkills
   const resume = props.resume
   const [isToggled, setIsToggled] = useState(false);
-  const [searchWords, setSearchWords] = useState(hiLightHardSkills)
+  const [searchWords, setSearchWords] = useState(hiLightVitalSoftSkills)
   
   
   const onToggle = function (event) {

@@ -64,6 +64,7 @@ form {
   border: rgb(0, 0, 0) 20px solid;
   padding: 20px;
   background-color: rgb(56, 51, 51);
+  margin-top: -25px;
 }
 
 .bars_container {
@@ -152,16 +153,7 @@ textarea:focus {
 
 .result_table_container div 
 
-.overview {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  background-color: rgb(0, 0, 0);
-  width: 100%;
-  margin-bottom: -30px;
-  color: white;
-  padding-top: 10px;
-}
+
 
 .table_highlight_container {
   display: flex;
@@ -177,6 +169,39 @@ textarea:focus {
   flex-direction: column;
   justify-content: center;
 
+}
+
+.please_input {
+  background-color:black;
+  color: orange;
+  margin-top: -30px;
+  height: 100px;
+  padding: 20px;
+  font-size: 30px;
+  
+}
+
+.job_search_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 20px;
+ 
+}
+
+.job_search_button {
+  width: 120px;
+  
+}
+
+.location_dropdown {
+  width: 150px;
+  height: 10px;
+}
+
+.actual_jobSearch_button {
+  background-color: black;
+  color: white;
 }
 
 /* width */

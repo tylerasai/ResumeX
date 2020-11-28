@@ -4,8 +4,6 @@ import axios from 'axios';
 
 export default function useJobPostings(keywords, location) {
 
-  console.log("THIS IS KEYWORDS SHER!",keywords);
-  console.log("THIS IS LOCACIOON", location);
 
   const [ jobPostings, setJobPosting ] = useState([]);
 

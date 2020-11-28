@@ -26,7 +26,7 @@ export default function Main() {
   const [jobPosting, setJobposting] = useState("");
   const [resume, setResume] = useState("");
   const [edit, setEdit] = useState([""]);
-  const [PrimaryScore, setPrimaryScore] = useState([""]);
+  // const [PrimaryScore, setPrimaryScore] = useState([""]);
 
   const [hiLightHardSkills, setHiLightHardSkills] = useState([""]);
 
@@ -63,7 +63,7 @@ export default function Main() {
 
   const firstScore = getScores(vitalKeywords, resume);
   const secondScore = getScores(vitalSoftSkills, resume);
-
+  const thirdScore = getScores(jobRepeatPosting, resume);
   //resumeAndPosting is an array of the words
   //that repeat on the posting and repeat on the resume with a count of each
 
@@ -73,7 +73,7 @@ export default function Main() {
   //dummy for the barchart
   const hardSkillScore = firstScore;
   const softSkillScore = secondScore;
-  const specificKeywords = 100;
+  const specificKeywords = thirdScore;
   const skillsSum = hardSkillScore + softSkillScore + specificKeywords;
   const totalScore = 300;
   //Dummy variables for charts
@@ -96,7 +96,7 @@ export default function Main() {
     event.preventDefault();
 
     setEdit(vitalKeywords, vitalSoftSkills);
-    setPrimaryScore(hardSkillScore);
+    // setPrimaryScore(hardSkillScore);
 
     setHiLightHardSkills(extractWordsOnly(vitalKeywords));
     setHiLightVitalSoftSkills(extractWordsOnly(vitalSoftSkills));
@@ -106,11 +106,11 @@ export default function Main() {
   const wordTextResume = function (buffer) {
     //reads the file from resume and changes it to text
 
+
     mammoth
       .extractRawText({ arrayBuffer: buffer })
       .then(function (result) {
         const text = result.value; // The raw text
-        const messages = result.messages;
         setResume(text);
       })
       .done();
@@ -234,16 +234,15 @@ export default function Main() {
           Submit
         </button>
       </div>
-      <h1 className="overview">Summary</h1>
       <br></br>
       {submitState ? <div>
+        <div id="overview"><h2>ResumeX Results</h2></div>
       <div className="results_container">
-        
         <DonutWithText match={match} unmatch={unmatch} />
 
         <div className="bars_container">
           <span>Primary Key Words</span>
-          <BarChart score={PrimaryScore} />
+          <BarChart score={firstScore} />
           <span>Soft Skills Match</span>
           <BarChart score={secondScore} />
           <span>Posting Specific Keywords Match</span>
@@ -279,25 +278,34 @@ export default function Main() {
               />
           </div>
 
-          <div className="job_search_button">
-            <button onClick={moveToJobSearch}>Job Search</button>
+          <div className="job_search_container">
 
-            <select onChange={onClick_JobSearch}>
+            <div className="location_dropdown">
+              <select onChange={onClick_JobSearch}>
               <option value="">
               </option>
 
-              <option value="usa">
-                USA
-              </option>
-              <option value="canada">Canada</option>
-              <option value="uk">UK</option>
-            </select>
-          </div>
+                <option value="usa">
+                United States
+                </option>
+                <option value="canada">Canada</option>
+                <option value="uk">United Kingdom</option>
+              </select>
+            </div>
+           
+              <div className="job_search_button">
+
+                <button className="actual_jobSearch_button"  onClick={moveToJobSearch}>Job Search</button>
+
+              </div>
+            
+            </div>
+            
         
         </div>
       
       </div>
-              </div> : <div>Please input resume and job posting</div>}
+              </div> : <div className ="please_input">Please paste or upload a job posting and your resume.</div>}
     
     </>
   );
