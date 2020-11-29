@@ -52,7 +52,9 @@ form {
   background-color: white;
   width: 10px;
 }
-
+#myFile {
+  color:white;
+}
 .resume-upload {
   background-color: white;
   width: 10px;
@@ -96,12 +98,14 @@ form {
   border: 1px #ffffff solid;
   text-align: center;
   padding: 100px 0;
+  margin-bottom: 20px;
 }
 
 .resume-area textarea {
   border: 1px #ffffff solid;
   text-align: center;
   padding: 100px 0;
+  margin-bottom: 20px;
 }
 
 .job-area {
