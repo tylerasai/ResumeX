@@ -1,6 +1,12 @@
 import React from "react";
 import "./home.css";
 import flowchart from "../assets/img/flowchart.png";
+import intro from "../assets/img/intro.png";
+import inspiration from "../assets/img/inspiration.png";
+import tech_stack from "../assets/img/tech_stack.png";
+
+
+
 
 // import useVisualMode from "../Hooks/useVisualMode"
 
@@ -46,6 +52,17 @@ export default function Home(props) {
           </div>
           <div className="home_image">
             <img src={flowchart}></img>
+						<img className="images_home" src={intro}></img>
+						<img className="images_home" src={inspiration}></img>
+						<img className="images_home" src={tech_stack}></img>
+						
+						<div class="header-section">
+                  <h2 class="title"> <a href="/main">Enter_Resume<span>X</span></a>
+                    
+                  </h2>
+                </div>
+
+
           </div>
         </section>
       </body>

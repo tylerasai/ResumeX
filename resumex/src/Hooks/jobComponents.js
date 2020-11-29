@@ -18,7 +18,6 @@ export default function useJobPostings(keywords, location) {
      })
     
      .then(response => {
-      console.log(response.data.jobs)
       // return response.data.jobs;
       setJobPosting(response.data.jobs)
     })
