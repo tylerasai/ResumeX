@@ -172,6 +172,10 @@ textarea:focus {
   justify-content: center;
 }
 
+#myFile {
+  color: white;
+}
+
 .please_input {
   background-color: black;
   color: orange;
