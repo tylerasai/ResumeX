@@ -122,3 +122,7 @@ a,p,h1,h2,h3,h4,ul {
 .home_image {
 	text-align: center;
 }
+
+.images_home {
+	width: 100%;
+}

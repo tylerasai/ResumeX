@@ -24,10 +24,13 @@ import {
 } from "../Helpers/getJobSpecificWords";
 
 export default function Main() {
-  const [jobPosting, setJobposting] = useState("");
-  const [resume, setResume] = useState("");
-  const [edit, setEdit] = useState([""]);
-  // const [PrimaryScore, setPrimaryScore] = useState([""]);
+  //Storing the sessions
+  const storedJobposting = localStorage.getItem('jobPosting') || ""
+  const [jobPosting, setJobposting] = useState(storedJobposting)
+  const storedResume = localStorage.getItem('resume') || ""
+  const [resume, setResume] = useState(storedResume);
+
+
 
   const [hiLightHardSkills, setHiLightHardSkills] = useState([""]);
 
@@ -89,16 +92,17 @@ export default function Main() {
 
   const onChange = function (event) {
     setJobposting(event.target.value);
+    localStorage.setItem('jobPosting', event.target.value);
   };
   const onChange1 = function (event) {
     setResume(event.target.value);
+    localStorage.setItem('resume', event.target.value)
   };
+  
   const onClick = function (event) {
     event.preventDefault();
 
-    setEdit(vitalKeywords, vitalSoftSkills);
-    // setPrimaryScore(hardSkillScore);
-
+ 
     setHiLightHardSkills(extractWordsOnly(vitalKeywords));
     setHiLightVitalSoftSkills(extractWordsOnly(vitalSoftSkills));
     setSubmitState(true)
@@ -106,30 +110,32 @@ export default function Main() {
 
   const wordTextResume = function (buffer) {
     //reads the file from resume and changes it to text
-
-
     mammoth
       .extractRawText({ arrayBuffer: buffer })
       .then(function (result) {
+      try{
         const text = result.value; // The raw text
         setResume(text);
+      }catch(e){
+        alert("Please another file to upload") // our code going bad
+      }
       })
-       .done();
+      .catch(function (error) {
+        alert("Please another file to upload") // mammoth couldnt' handle the input
+      });
   };
-
   const onChangeResume = function (event) {
     //takes the file and reads the file from buffer of array
-
     const reader = new FileReader();
     const fileData = event.target.files[0];
-    if (fileData.name.includes(".docx")) {
-      reader.onloadend = (event) => {
-        wordTextResume(event.target.result);
-      }; //triggers when the reader stops reading file
-        reader.readAsArrayBuffer(fileData);
-    } else {
-      alert("Upload a docx file!");
+    if(!fileData.name.endsWith("docx")){
+      alert("Please Upload a docx file")
+      return
     }
+    reader.onloadend = (event) => {
+      wordTextResume(event.target.result);
+    }; //triggers when the reader stops reading file
+    reader.readAsArrayBuffer(fileData);
   };
 
   const wordTextJob = function (buffer) {
@@ -137,27 +143,30 @@ export default function Main() {
     mammoth
       .extractRawText({ arrayBuffer: buffer })
       .then(function (result) {
+      try{
         const text = result.value; // The raw text
         setJobposting(text);
+      }catch(e){
+        alert("Please another file to upload") // our code going bad
+      }
       })
-      .done();
+      .catch(function (error) {
+        alert("Please another file to upload") // mammoth couldnt' handle the input
+      });
   };
 
   const onChangeJob = function (event) {
     //takes the file and reads the file from buffer of array
     const reader = new FileReader();
     const fileData = event.target.files[0];
-    
-    if (fileData.name.includes(".docx")) {
-      reader.onloadend = (event) => {
-        wordTextJob(event.target.result);
-      }; //triggers when the reader stops reading file
-        reader.readAsArrayBuffer(fileData);
-    } else {
-      alert("Upload a docx file!");
+    if(!fileData.name.endsWith("docx")){
+      alert("Please Upload a docx file")
+      return
     }
-    
-    
+    reader.onloadend = (event) => {
+      wordTextJob(event.target.result);
+    }; //triggers when the reader stops reading file
+    reader.readAsArrayBuffer(fileData);
   };
 
   //Job Search component
@@ -165,7 +174,6 @@ export default function Main() {
     .slice(0, 5)
     .toString();
 
-  console.log("JOB SEARCH KEYWORDS", jobSearchKeyword);
 
   const [countrySelected, setCountrySelected] = useState("");
 
@@ -176,7 +184,6 @@ export default function Main() {
   };
 
   const usePrintJobPosting = useJobPostings(jobSearchKeyword, countrySelected);
-  console.log("USER PRINT JOB POSTING", usePrintJobPosting);
 
   const moveToJobSearch = () => {
     history.push({ pathname: "/job-search", data: usePrintJobPosting });

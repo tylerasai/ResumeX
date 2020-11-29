@@ -25,21 +25,13 @@ export default function Nav() {
                 Home <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about">
-                About
-              </a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="/main">
                 Main
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/job-search">
-                Job Search
-              </a>
-            </li>
+            
           </ul>
         </div>
       </nav>{" "}

@@ -73,7 +73,6 @@ export default function ResulTable(props) {
     }
   };
   for (let i = 0; i < vitalKeywords.length; i++) {
-    console.log(typeof vitalKeywords[i][0]);
     rows.push(
       createData(
         vitalKeywords[i][0],
