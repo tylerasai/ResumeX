@@ -40,12 +40,15 @@ box-shadow: 5px 10px gray;
   align-items: center;
   display: flex;
   flex-direction: column;
-  background-color: rgb(196, 199, 189);
+  background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/02/beautiful-color-gradients-backgrounds-076-premium-dark.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.go_back_resume {
-  margin-top: 15px;
+.btn {
+  margin-top: 30px;
   font-size: 20px;
+  margin-bottom: 0;
 }
 
 
@@ -84,6 +87,149 @@ box-shadow: 5px 10px gray;
 .dropdown:hover .dropbtn {background-color: grey;}
 
 
+a,p,h1,h2,h3,h4,ul {
+	margin: 0;
+	padding: 0;
+}
 
+.section-services1 .header-section .title {
+	font-size: 100px;
+
+}
+
+.section-services1 .header-section a{
+	color: white;
+}
+.section-services1 .header-section a:hover{
+	color: white;
+	text-decoration: none;
+}
+
+
+.section-services1 .header-section .description1 {
+	font-size: 50px;
+}
+
+
+
+.section-services1 {
+  display: flex;
+  height: 400px;
+  
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* object-fit: contain; */
+	padding-top: 60px;
+	padding-bottom: 60px;
+	font-family: "Poppins", sans-serif;
+	background-color: rgb(0, 0, 0);
+	color: #fff;
+}
+
+.section-services1 .container1 {
+margin-left: 10rem;
+
+/* margin-right: 50%; */
+}
+
+.section-services1 .header-section1 {
+  margin-bottom: 35px;
+  
+}
+
+.section-services1 .header-section .title {
+	position: relative;
+	margin-bottom: 40px;
+	padding-bottom: 25px;
+  /* text-transform: uppercase; */
+  font-size: 50px;
+	font-weight: 700;
+}
+
+.section-services1 .header-section .title:before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 140px;
+	height: 1px;
+	background-color: #f70037;
+}
+
+.section-services1 .header-section .title:after {
+	content: "";
+	position: absolute;
+	bottom: -1px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 45px;
+	height: 3px;
+	background-color: #f70037;
+}
+
+.section-services1 .header-section .title span {
+	color: #f70037;
+}
+
+.section-services1 .header-section .description1 {
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.section-services1 .single-service {
+	margin-top: 40px;
+	background-color: #434444;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.section-services1 .single-service .part-1 {
+	padding: 40px 40px 25px;
+	border-bottom: 2px solid #1d1e23;
+}
+
+.section-services1 .single-service .part-1 i {
+	margin-bottom: 25px;
+	font-size: 50px;
+	color: #f70037;
+}
+
+.section-services1 .single-service .part-1 .title {
+	font-size: 17px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	line-height: 1.8em;
+}
+
+.section-services1 .single-service .part-2 {
+	padding: 30px 40px 40px;
+}
+
+.section-services1 .single-service .part-2 .description1 {
+	margin-bottom: 22px;
+	color: #6f6f71;
+	font-size: 14px;
+	line-height: 1.8em;
+}
+
+.section-services1 .single-service .part-2 a {
+	color: #fff;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.section-services1 .single-service .part-2 a i {
+	margin-right: 10px;
+	color: #f70037;
+}
+
+.home_image {
+	text-align: center;
+}
+
+.images_home {
+	width: 100%;
+}
 
 
