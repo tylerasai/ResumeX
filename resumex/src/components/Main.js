@@ -23,14 +23,16 @@ import {
 } from "../Helpers/getJobSpecificWords";
 
 export default function Main() {
-  const [jobPosting, setJobposting] = useState("");
-  const [resume, setResume] = useState("");
+  const storedJobposting = localStorage.getItem('jobPosting') || ""
+  const [jobPosting, setJobposting] = useState(storedJobposting)
+ 
+  const storedResume = localStorage.getItem('resume') || ""
+  const [resume, setResume] = useState(storedResume);
   const [edit, setEdit] = useState([""]);
-  // const [PrimaryScore, setPrimaryScore] = useState([""]);
-
+  
   const [hiLightHardSkills, setHiLightHardSkills] = useState([""]);
-
   const [hiLightVitalSoftSkills, setHiLightVitalSoftSkills] = useState([""]);
+
   const [submitState, setSubmitState] = useState(false);
 
   const { keywords } = useKeyWords();
@@ -38,7 +40,7 @@ export default function Main() {
   
   const history = useHistory();
 
-  //Cick job search - calling
+  
 
   //vitalKeywords is an array with the same words of the database and jobposting
   //for hardskills
@@ -70,13 +72,13 @@ export default function Main() {
   const resumeRepeatFromPosting = pairMatch(keywords, resume);
   const resumeRepeatSoftSkillsPosting = pairMatch(softskills, resume);
 
-  //dummy for the barchart
+  //scores for barchart
   const hardSkillScore = firstScore;
   const softSkillScore = secondScore;
   const specificKeywords = thirdScore;
   const skillsSum = hardSkillScore + softSkillScore + specificKeywords;
   const totalScore = 300;
-  //Dummy variables for charts
+  //scores for donut chart
   const match = ((skillsSum / totalScore) * 100).toFixed(2);
   const unmatch = 100 - match;
   //Dummy variables for charts
@@ -88,16 +90,17 @@ export default function Main() {
 
   const onChange = function (event) {
     setJobposting(event.target.value);
+    localStorage.setItem('jobPosting', event.target.value);
   };
   const onChange1 = function (event) {
     setResume(event.target.value);
+    localStorage.setItem('resume', event.target.value)
   };
   const onClick = function (event) {
     event.preventDefault();
 
     setEdit(vitalKeywords, vitalSoftSkills);
-    // setPrimaryScore(hardSkillScore);
-
+    
     setHiLightHardSkills(extractWordsOnly(vitalKeywords));
     setHiLightVitalSoftSkills(extractWordsOnly(vitalSoftSkills));
     setSubmitState(true)
@@ -110,10 +113,17 @@ export default function Main() {
     mammoth
       .extractRawText({ arrayBuffer: buffer })
       .then(function (result) {
+          
+      try{
         const text = result.value; // The raw text
         setResume(text);
+      }catch(e){
+        console.log("Please another file to upload") // our shit going bad
+      }
       })
-      .done();
+      .catch(function (error) {
+        console.log("Please another file to upload") // mammoth couldnt' handle the shit
+      });
   };
 
   const onChangeResume = function (event) {
@@ -121,6 +131,14 @@ export default function Main() {
 
     const reader = new FileReader();
     const fileData = event.target.files[0];
+    if(!fileData.name.endsWith("docx")){
+      alert("Please Upload a docx file")
+      return
+    }
+    // console.log("file.data.name", fileData.name)
+    
+    // console.log("file.data.type", fileData.type, !fileData.name.endsWith(".odt"))
+    
     reader.onloadend = (event) => {
       wordTextResume(event.target.result);
     }; //triggers when the reader stops reading file
@@ -134,16 +152,27 @@ export default function Main() {
     mammoth
       .extractRawText({ arrayBuffer: buffer })
       .then(function (result) {
+       
+      try{
         const text = result.value; // The raw text
         setJobposting(text);
+      }catch(e){
+        console.log("Please another file to upload") // our shit going bad
+      }
       })
-      .done();
+      .catch(function (error) {
+        console.log("Please another file to upload") // mammoth couldnt' handle the shit
+      });
   };
 
   const onChangeJob = function (event) {
     //takes the file and reads the file from buffer of array
     const reader = new FileReader();
     const fileData = event.target.files[0];
+    if(!fileData.name.endsWith("docx")){
+      alert("Please Upload a docx file")
+      return
+    }
     reader.onloadend = (event) => {
       wordTextJob(event.target.result);
     }; //triggers when the reader stops reading file
@@ -156,19 +185,17 @@ export default function Main() {
     .slice(0, 5)
     .toString();
 
-  console.log("JOB SEARCH KEYWORDS", jobSearchKeyword);
-
+  
   const [countrySelected, setCountrySelected] = useState("");
 
   const onClick_JobSearch = function (event) {
-    // event.preventDefault();
-    //set state on the vitalKeywords, firstScore, resumeandPosting
+    
+    
     setCountrySelected(event.target.value);
   };
-
+//use hook to make an API call to search for jobs on Jooble with top 3 vitalKeywords
   const usePrintJobPosting = useJobPostings(jobSearchKeyword, countrySelected);
-  console.log("USER PRINT JOB POSTING", usePrintJobPosting);
-
+//use to go to job search page passing necessary data  
   const moveToJobSearch = () => {
     history.push({ pathname: "/job-search", data: usePrintJobPosting });
   };

@@ -11,7 +11,7 @@ import {
   Link
 } from "react-router-dom";
 function App(props) {
-  console.log("these are inputs",props.input);
+  
   return (
     <Router>
       <div className="App">
