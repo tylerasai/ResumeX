@@ -124,7 +124,7 @@ export default function Main() {
     const fileData = event.target.files[0];
     if (fileData.name.includes(".docx")) {
       reader.onloadend = (event) => {
-        wordTextJob(event.target.result);
+        wordTextResume(event.target.result);
       }; //triggers when the reader stops reading file
         reader.readAsArrayBuffer(fileData);
     } else {
