@@ -82,7 +82,7 @@ function onError(error) {
  */
 
 function onListening() {
-  console.log("server is listening on 3003");
+  console.log(`server is listening on ${process.env.PORT}`);
   var addr = server.address();
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
