@@ -19,9 +19,9 @@ const extrahelp = {
       return textArray;
   },
   
-  extractKeywords : (array) => {
+  extractKeywords : (array = []) => {
   
-    
+    console.log(array);
     let resultArray = [];
     for (let item of array) {
       resultArray.push(item["keyword"].toLowerCase());

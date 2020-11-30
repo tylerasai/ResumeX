@@ -11,7 +11,7 @@ export default function useJobPostings(keywords, location) {
   useEffect(() => {
  
    
-      axios.post("https://jooble.org/api/d82cf18f-efe3-466b-bdf9-2cc38d167951", {
+      axios.get("/api/jobs", {
         "keywords": keywords,
         "location": location,
         "page": "1"
@@ -19,7 +19,7 @@ export default function useJobPostings(keywords, location) {
     
      .then(response => {
       // return response.data.jobs;
-      setJobPosting(response.data.jobs)
+      setJobPosting(response.data)
     })
     // .then(setJobPosting);
   

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const pg = require('pg');
 const Client = pg.Client;
+const axios = require('axios');
 
 var express = require("express");
 var path = require("path");
@@ -41,6 +42,31 @@ app.use(cookieParser());
 
 app.use('/api/keywords', keywordsRouter(dbHelpers));
 app.use('/api/softskills', softSkillsRouter(dbHelpers));
+app.get('/api/jobs', (req, res) => {
+  
+  axios.post("https://jooble.org/api/1d7d38d8-11e8-454e-a8cc-545db82430c9", {
+    "keywords": "react, javascript",
+    "location": "Canada",
+    "page": "1"
+ })
+
+ .then(response => {
+  // return response.data.jobs;
+  
+  res.send(response.data.jobs)
+})
+.catch((error) => {
+  console.error(error);
+  res.status(500);
+  res.send(error);
+  
+  
+})
+// .then(setJobPosting);
+
+
+
+})
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'resumex','build', 'index.html'));
