@@ -31,7 +31,7 @@ const dbHelpers = require('./db/helpers/dbHelpers')(db);
 
 var app = express();
 app.use(cors());
-app.use(express.static("../resumex/build"));
+app.use(express.static("./resumex/build"));
 
 const port = process.env.PORT || 3005
 
@@ -45,6 +45,12 @@ app.use("/", indexRouter);
 app.use('/api/keywords', keywordsRouter(dbHelpers));
 app.use('/api/softskills', softSkillsRouter(dbHelpers));
 
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'resumex','build', 'index.html'));
+});
+
+
 app.listen(port);
 
 module.exports = app;
+
