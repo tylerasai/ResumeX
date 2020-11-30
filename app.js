@@ -22,7 +22,6 @@ db.connect(() => {
 
 });
 
-var indexRouter = require("./routes/index");
 var keywordsRouter = require("./routes/keywords");
 var softSkillsRouter = require("./routes/softskills");
 
@@ -39,9 +38,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
 app.use('/api/keywords', keywordsRouter(dbHelpers));
 app.use('/api/softskills', softSkillsRouter(dbHelpers));
 
