@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {useLocation} from 'react-router-dom';
 
 import './jobPosting.css'
@@ -10,10 +10,8 @@ const JobPage = (props) => {
 
 
 const location = useLocation();
-console.log("PROPS DOT LOCATION",location.data);
 
 const jobPostings = location.data.jobPostings;
-console.log(jobPostings);
 
 const listJobs = jobPostings.map( (jobPosting) => {
     return (

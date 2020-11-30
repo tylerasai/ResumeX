@@ -44,11 +44,14 @@ app.use('/api/keywords', keywordsRouter(dbHelpers));
 app.use('/api/softskills', softSkillsRouter(dbHelpers));
 app.get('/api/jobs', (req, res) => {
   
+  console.log("THE KEYWORDSSSSSSSSSSSSSSSSSS", req.query.keywords);
+
   axios.post("https://jooble.org/api/1d7d38d8-11e8-454e-a8cc-545db82430c9", {
     "keywords": req.query.keywords,
     "location": req.query.location,
     "page": "1"
  })
+
 
  .then(response => {
   // return response.data.jobs;
