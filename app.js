@@ -45,5 +45,6 @@ app.use("/", indexRouter);
 app.use('/api/keywords', keywordsRouter(dbHelpers));
 app.use('/api/softskills', softSkillsRouter(dbHelpers));
 
+app.listen(port);
 
 module.exports = app;
