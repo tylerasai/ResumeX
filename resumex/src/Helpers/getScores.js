@@ -1,7 +1,8 @@
-const { createArrayofText } = require("./extrahelp");
+import extrahelp from "./extrahelp";
+const createArrayofText = extrahelp.createArrayofText;
 //getScores function gives you a score of how many of the vitalKeywords you have on the resume
 
-const getScores = function (vitalKeywords, Resume) {
+export default function getScores (vitalKeywords, Resume) {
   if (!vitalKeywords.length) {
     return [];
   }
@@ -27,4 +28,3 @@ const getScores = function (vitalKeywords, Resume) {
   let finalScores = [...new Set(scoreArray)]
   return (finalScores.length/topTenVital.length) * 100
 };
-module.exports = getScores;

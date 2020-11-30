@@ -1,14 +1,16 @@
-const {extractKeywords} =require("./extrahelp")
-const {createArrayofText} =require("./extrahelp")
-const {wordRanker} =require("./extrahelp")
-const {ObjectToRankedArray} =require("./extrahelp")
+import extrahelp from "./extrahelp";
+const extractKeywords = extrahelp.extractKeywords;
+const createArrayofText = extrahelp.createArrayofText;
+const wordRanker = extrahelp.wordRanker;
+const ObjectToRankedArray = extrahelp.ObjectToRankedArray;
+
 
 
 //pairMatch function matches the wordlist from our database with the 
 //the words in the job posting to form the vitalKeywords list
 //to pass ATS
-const pairMatch = function (array, paragraph) {
- 
+export default function pairMatch(array, paragraph) {
+  
   
   const resultArray = extractKeywords(array)  //this will change the json.data into an array of words ["React","Vue"]
   const paragraphArray = createArrayofText(paragraph) //this will change the text into an array of words ["This","is","an","example"]
@@ -46,5 +48,3 @@ const pairMatch = function (array, paragraph) {
 
   return rankedArray;
 };
-
-module.exports = pairMatch;

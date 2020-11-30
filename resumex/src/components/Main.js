@@ -8,7 +8,6 @@ import useSoftSkills from "../Hooks/SoftSkills";
 import pairMatch from "../Helpers/pairMatch";
 import getScores from "../Helpers/getScores";
 
-import { extractWordsOnly } from "../Helpers/extrahelp";
 import mammoth from "mammoth";
 import DonutWithText from "../components/DonutWithText";
 import BarChart from "../components/BarChart";
@@ -18,10 +17,17 @@ import ResultTable from "./ResultTable";
 import ToggleSwitch from "../components/ToggleSwitch";
 import useJobPostings from "../Hooks/jobComponents";
 
-import {
-  getJobSpecificResume,
-  getJobSpecificPosting,
-} from "../Helpers/getJobSpecificWords";
+import extrahelp from "../Helpers/extrahelp";
+
+import getJobSpecificWords from "../Helpers/getJobSpecificWords";
+const getJobSpecificPosting = getJobSpecificWords.getJobSpecificPosting;
+const getJobSpecificResume = getJobSpecificWords.getJobSpecificResume;
+const extractWordsOnly = extrahelp.extractWordsOnly;
+
+// const extractWordsOnly = require("../Helpers/extrahelp");
+// const getJobSpecificPosting = require("../Helpers/getJobSpecificWords");
+// const getJobSpecificResume = require("../Helpers/getJobSpecificWords");
+
 
 export default function Main() {
   //Storing the sessions

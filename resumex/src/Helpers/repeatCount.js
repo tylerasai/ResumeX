@@ -1,14 +1,14 @@
-const {extractKeywords} =require("./extrahelp")
-const {createArrayofText} =require("./extrahelp")
-const {wordRanker} =require("./extrahelp")
-const {ObjectToRankedArray} =require("./extrahelp")
-
-const array = [["jay", 1] ,["bring bros", 2], ["ho", 1] ,["tyler", 2] ,["bro", 2],["bra",3] ,["bri", 5], ["mom",6], ["dad",6], ["granma",2], ["sher",5], ["adriana lima",4],["brazil", 5]];
-const text = " jay bring bros adriana lima jay";
+import extrahelp from "./extrahelp";
+const createArrayofText = extrahelp.createArrayofText;
+const wordRanker = extrahelp.wordRanker;
+const ObjectToRankedArray = extrahelp.ObjectToRankedArray;
 
 //this function counts how many times a word repeats and ranks it
 //by order of repitition count in an object with word:count
-const repeatCount = function (text) {
+
+
+
+export default function repeatCount (text) {
 
   const inputText = createArrayofText(text) //creates an array of words from the text
 
@@ -28,7 +28,6 @@ const repeatCount = function (text) {
   };
 
 
-  module.exports = repeatCount;
 
 
  
