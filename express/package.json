@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./bin/www && node app.js",
     "dev": "nodemon app.js",
-    "db:reset": "node ./db/reset.js"
+    "db:reset": "node ./db/reset.js",
+    "build": "cd resumex && npm install && npm run build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

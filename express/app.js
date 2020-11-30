@@ -16,6 +16,8 @@ var app = express();
 app.use(cors());
 app.use(express.static("../resumex/build"));
 
+const port = process.env.productiton.PORT
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
