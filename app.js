@@ -45,8 +45,8 @@ app.use('/api/softskills', softSkillsRouter(dbHelpers));
 app.get('/api/jobs', (req, res) => {
   
   axios.post("https://jooble.org/api/1d7d38d8-11e8-454e-a8cc-545db82430c9", {
-    "keywords": "react, javascript",
-    "location": "Canada",
+    "keywords": req.query.keywords,
+    "location": req.query.location,
     "page": "1"
  })
 

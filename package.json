@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "db:reset": "node ./db/reset.js",
-    "build": "cd resumex && npm install && npm run build"
+    "build": "npm run db:reset && cd resumex && npm install && npm run build"
   },
   "dependencies": {
     "axios": "^0.21.0",
