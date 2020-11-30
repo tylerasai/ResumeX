@@ -1,9 +1,26 @@
+require('dotenv').config();
+const pg = require('pg');
+const Client = pg.Client;
+
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require('cors');
-const db = require("./db");
+
+const config = {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+};
+
+const db = new Client(config);
+db.connect(() => {
+
+  console.log('successfully connected to db');
+
+});
 
 var indexRouter = require("./routes/index");
 var keywordsRouter = require("./routes/keywords");
@@ -16,7 +33,7 @@ var app = express();
 app.use(cors());
 app.use(express.static("../resumex/build"));
 
-const port = process.env.productiton.PORT
+const port = process.env.PORT || 3005
 
 app.use(logger("dev"));
 app.use(express.json());
