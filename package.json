@@ -4,7 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "node ./bin/www && node app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js",
     "db:reset": "node ./db/reset.js",
     "build": "cd resumex && npm install && npm run build"
