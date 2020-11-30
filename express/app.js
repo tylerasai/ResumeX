@@ -14,6 +14,7 @@ const dbHelpers = require('./db/helpers/dbHelpers')(db);
 
 var app = express();
 app.use(cors());
+app.use(express.static("../resumex/build"));
 
 app.use(logger("dev"));
 app.use(express.json());
