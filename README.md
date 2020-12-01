@@ -14,10 +14,10 @@ ResumeX allows users to upload job description and resume and get results whethe
 
 Please enjoy our application and get hired!
 
----  Built by: Tyler, Jay Ho and Sher Arsalaie. ---
+---  Built by: Tyler Asai, Jay Ho and Sher Arsalaie. ---
 
 ## Screenshots
-!["Main page with resume and job description and results"](<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex_demo.gif" width="800">)
+!["Main page with resume and job description and results"]<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex_demo.gif" width="800">
 
 
 
