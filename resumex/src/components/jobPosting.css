@@ -21,7 +21,7 @@
   align-items: flex-start;
   margin-left: 1em;
 }
-.job-container:hover h5 {
+/* .job-container:hover h5 {
   color: black;
 }
 
@@ -33,7 +33,7 @@
 .job-container:hover {
 opacity: 100%;
 box-shadow: 5px 10px gray;
-}
+} */
 
 .listing_container {
   justify-content: center;
