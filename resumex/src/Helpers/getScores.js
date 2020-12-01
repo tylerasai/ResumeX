@@ -4,7 +4,7 @@ const createArrayofText = extrahelp.createArrayofText;
 
 export default function getScores (vitalKeywords, Resume) {
   if (!vitalKeywords.length) {
-    return [];
+    return 0;
   }
   const allVital = [];
   //get the top ten vitalKeywords
@@ -26,5 +26,14 @@ export default function getScores (vitalKeywords, Resume) {
   }
  
   let finalScores = [...new Set(scoreArray)]
-  return (finalScores.length/topTenVital.length) * 100;
+
+
+  const result = (finalScores.length/topTenVital.length) * 100;
+
+
+
+    return result;
+  
+
+
 };

@@ -69,11 +69,12 @@ export default function Main() {
   const jobRepeatResume = getJobSpecificResume(resume, jobPosting);
 
   //firstScore and Second score is for the bargraph to rank how many of the keywords for
-  //hardskills and softskills you got
 
-  const firstScore = (parseFloat(getScores(vitalKeywords, resume))).toFixed(2) ;
-  const secondScore = (parseFloat(getScores(vitalSoftSkills, resume))).toFixed(2);
-  const thirdScore = (parseFloat(getScores(jobRepeatPosting, resume))).toFixed(2);
+  console.log("GET SCORE SECOND SCORE", getScores(vitalSoftSkills, resume));
+
+  const firstScore = (parseFloat(getScores(vitalKeywords, resume))).toFixed(2) || 0;
+  const secondScore = (parseFloat(getScores(vitalSoftSkills, resume))).toFixed(2) || 0;
+  const thirdScore = (parseFloat(getScores(jobRepeatPosting, resume))).toFixed(2) || 0;
   //resumeAndPosting is an array of the words
   //that repeat on the posting and repeat on the resume with a count of each
 
@@ -82,7 +83,7 @@ export default function Main() {
 
   //dummy for the barchart
   //comment this
-  const hardSkillScore = parseFloat(firstScore)|| 0;
+  const hardSkillScore = parseFloat(firstScore) || 0;
   const softSkillScore = parseFloat(secondScore) || 0;
   const specificKeywords = parseFloat(thirdScore) || 0;
   const skillsSum = hardSkillScore + softSkillScore + specificKeywords;
