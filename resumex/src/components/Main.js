@@ -71,9 +71,9 @@ export default function Main() {
   //firstScore and Second score is for the bargraph to rank how many of the keywords for
   //hardskills and softskills you got
 
-  const firstScore = getScores(vitalKeywords, resume);
-  const secondScore = getScores(vitalSoftSkills, resume);
-  const thirdScore = getScores(jobRepeatPosting, resume);
+  const firstScore =  parseFloat(getScores(vitalKeywords, resume)).toFixed(2);
+  const secondScore = parseFloat(getScores(vitalSoftSkills, resume)).toFixed(2);
+  const thirdScore = parseFloat(getScores(jobRepeatPosting, resume)).toFixed(2);
   //resumeAndPosting is an array of the words
   //that repeat on the posting and repeat on the resume with a count of each
 
@@ -81,15 +81,15 @@ export default function Main() {
   const resumeRepeatSoftSkillsPosting = pairMatch(softskills, resume);
 
   //dummy for the barchart
-  const hardSkillScore = parseInt(firstScore);
-  const softSkillScore = parseInt(secondScore);
-  const specificKeywords = parseInt(thirdScore);
+  const hardSkillScore = parseInt(firstScore) || 0;
+  const softSkillScore = parseInt(secondScore) || 0;
+  const specificKeywords = parseInt(thirdScore) || 0;
   const skillsSum = hardSkillScore + softSkillScore + specificKeywords;
   const totalScore = 300;
-  //Dummy variables for charts
-  const match = ((skillsSum / totalScore) * 100).toFixed(2);
+ 
+  const match = parseFloat(((skillsSum / totalScore) * 100).toFixed(2));
   const unmatch = 100 - match;
-  //Dummy variables for charts
+ 
 
   //Titles for the table
   const hardSkillTitle = "Hard Skills";

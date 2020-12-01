@@ -26,5 +26,5 @@ export default function getScores (vitalKeywords, Resume) {
   }
  
   let finalScores = [...new Set(scoreArray)]
-  return ((finalScores.length/topTenVital.length) * 100).toFixed(2);
+  return (finalScores.length/topTenVital.length) * 100;
 };
