@@ -9,14 +9,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require('cors');
 
-const config = {
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-};
 
-const db = new Client(config);
+
+const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}?sslmode=disable` ;
+const db = new Client({connectionString: process.env.DB_URL || connectionString});
 db.connect(() => {
 
   console.log('successfully connected to db');
@@ -43,11 +39,11 @@ app.use(cookieParser());
 app.use('/api/keywords', keywordsRouter(dbHelpers));
 app.use('/api/softskills', softSkillsRouter(dbHelpers));
 
-app.get('/api/jobs', (req, res) => {
+app.post('/api/jobs', (req, res) => {
   
   axios.post("https://jooble.org/api/1d7d38d8-11e8-454e-a8cc-545db82430c9", {
-    "keywords": req.query.keywords,
-    "location": req.query.location,
+    "keywords": req.body.keywords,
+    "location": req.body.location,
     "page": "1"
  })
 
