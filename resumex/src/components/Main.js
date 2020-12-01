@@ -81,6 +81,7 @@ export default function Main() {
   const resumeRepeatSoftSkillsPosting = pairMatch(softskills, resume);
 
   //dummy for the barchart
+  //comment this
   const hardSkillScore = parseFloat(firstScore)|| 0;
   const softSkillScore = parseFloat(secondScore) || 0;
   const specificKeywords = parseFloat(thirdScore) || 0;
@@ -89,6 +90,7 @@ export default function Main() {
   console.log("first  score", firstScore);
   console.log("second score", secondScore);
   console.log("third score", thirdScore);
+
 
   const totalScore = 300;
  
