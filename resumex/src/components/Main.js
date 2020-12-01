@@ -98,7 +98,7 @@ export default function Main() {
   //Titles for the table
   const hardSkillTitle = "Hard Skills";
   const softSkillTitle = "Soft Skills";
-  const jobSpecificTitle = "Job Specific Skills";
+  const jobSpecificTitle = "Posting Specific Keywords Match";
 
   const onChange = function (event) {
     setJobposting(event.target.value);
@@ -267,7 +267,7 @@ export default function Main() {
         <DonutWithText match={match} unmatch={unmatch} />
 
         <div className="bars_container">
-          <span>Primary Key Words</span>
+          <span>Hard Skills Match</span>
           <BarChart score={firstScore} />
           <span>Soft Skills Match</span>
           <BarChart score={secondScore} />
