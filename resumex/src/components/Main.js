@@ -81,9 +81,9 @@ export default function Main() {
   const resumeRepeatSoftSkillsPosting = pairMatch(softskills, resume);
 
   //dummy for the barchart
-  const hardSkillScore = firstScore;
-  const softSkillScore = secondScore;
-  const specificKeywords = thirdScore;
+  const hardSkillScore = parseInt(firstScore);
+  const softSkillScore = parseInt(secondScore);
+  const specificKeywords = parseInt(thirdScore);
   const skillsSum = hardSkillScore + softSkillScore + specificKeywords;
   const totalScore = 300;
   //Dummy variables for charts
