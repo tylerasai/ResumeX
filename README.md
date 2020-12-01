@@ -22,7 +22,7 @@ Please enjoy our application and get hired!
 
 
 <img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-home.png" width="800">
-!["Job suggestions matching resume"](https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-jobsearch.png)
+<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-jobsearch.png" width="800">
 
 
 ## Details about app:
