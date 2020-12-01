@@ -1,8 +1,8 @@
-## ResumeX
-# A platform for checking and editing your resume to qualify for job's description or get job suggestions matching your resume.
+# ResumeX
+## A platform for checking and editing your resume to qualify for job's description or get job suggestions matching your resume.
 =========
 
-# Visit the website on: https://resumex2020.herokuapp.com/
+## Visit the website on: https://resumex2020.herokuapp.com/
 
 
 
