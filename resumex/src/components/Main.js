@@ -70,7 +70,6 @@ export default function Main() {
 
   //firstScore and Second score is for the bargraph to rank how many of the keywords for
 
-  console.log("GET SCORE SECOND SCORE", getScores(vitalSoftSkills, resume));
 
   const firstScore = (parseFloat(getScores(vitalKeywords, resume))).toFixed(2) || 0;
   const secondScore = (parseFloat(getScores(vitalSoftSkills, resume))).toFixed(2) || 0;
@@ -88,9 +87,6 @@ export default function Main() {
   const specificKeywords = parseFloat(thirdScore) || 0;
   const skillsSum = hardSkillScore + softSkillScore + specificKeywords;
 
-  console.log("first  score", firstScore);
-  console.log("second score", secondScore);
-  console.log("third score", thirdScore);
 
 
   const totalScore = 300;
