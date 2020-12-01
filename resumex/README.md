@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# ResumeX
+## A platform for checking your and editing your resume to qualify for job's description or get job suggestions matching your resume.
+=========
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Visit the website on: https://resumex2020.herokuapp.com/
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## --------------------------------------------
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A project built by Lighthouse Labs students.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ResumeX allows users to upload job description and resume and get results whether your resume qualifies for the job! You can also get job suggestions matching your resume. It is user friendly and uses modern frameworks such as React, css, express and more!
 
-### `npm test`
+Please enjoy our application and get hired!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---  Built by: Tyler, Jay Ho and Sher Arsalaie. ---
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+!["landing page/Home"]()
+!["Main page with resume and job description and results"]()
+!["Job suggestions matching resume"]()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Details about app:
 
-### `npm run eject`
+The app will help users in their careers by speeding up the resume and editing process. The app can be easily used and is user friendly. User can cut and paste the job description and resume in the text field, or they can upload the docx file and press submit. The submit button will give all the results in matter of seconds and will recommend the changes in resume in order to meet the job requirements. The user can also decide to look for a job using our job search option that uses api calls to hob websites and recommend jobs matching your resume automatically.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Getting Started
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Fork and clone the project.
+2. Update the .env file with your correct local information 
+  - DB_HOST = localhost
+  - DB_USER = labber  
+  - DB_PASS = labber
+  - DB_NAME = vagrant
+  - DB_PORT = 5432 
+3. Install dependencies: `npm install`
+4. Reset database: `npm run db:reset`
+  - Check the db folder to see what gets created and seeded in the SDB
+5. Run the server: `npm start`
+  - Note: nodemon is used, so you should not have to restart your server
+6. Run the App in another terminal: `npm start`
+  - Note: nodemon is used, so you should not have to restart your server
+7. Visit `http://localhost:3000/`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Dependencies
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- "axios": "^0.21.0",
+- "cookie-parser": "~1.4.4",
+- "cors": "^2.8.5",
+- "debug": "~2.6.9",
+- "dotenv": "^8.2.0",
+- "express": "~4.16.1",
+- "morgan": "~1.9.1",
+- "pg": "^8.5.1",
+- "pg-native": "^3.0.0"
