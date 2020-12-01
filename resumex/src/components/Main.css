@@ -140,6 +140,7 @@ textarea:focus {
 .table_highlight_container {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .result_table_container {
@@ -167,7 +168,7 @@ textarea:focus {
 }
 
 .highlight_toggle {
-  
+  margin-top: 30px;
   width: 900px;
   margin-left: 40px;
   text-align: justify;
