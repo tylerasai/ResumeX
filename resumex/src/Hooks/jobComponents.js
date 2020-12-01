@@ -11,7 +11,7 @@ export default function useJobPostings(keywords, location) {
   useEffect(() => {
  
    
-      axios.get("/api/jobs", {
+      axios.post("/api/jobs", {
         "keywords": keywords,
         "location": location,
         "page": "1"
