@@ -17,7 +17,7 @@ Please enjoy our application and get hired!
 ---  Built by: Tyler, Jay Ho and Sher Arsalaie. ---
 
 ## Screenshots
-!["Main page with resume and job description and results"](https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex_demo.gif){:height="700px" width="400px"}
+!["Main page with resume and job description and results"](https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex_demo.gifs=200)
 !["landing page/Home"](https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-home.png)
 !["Job suggestions matching resume"](https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-jobsearch.png)
 
