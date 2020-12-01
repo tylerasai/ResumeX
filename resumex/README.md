@@ -18,9 +18,9 @@ Please enjoy our application and get hired!
 
 ## Screenshots
 
-!["landing page/Home"]()
+!["landing page/Home"](https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-home.png)
 !["Main page with resume and job description and results"]()
-!["Job suggestions matching resume"]()
+!["Job suggestions matching resume"](https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-jobsearch.png)
 
 
 ## Details about app:
