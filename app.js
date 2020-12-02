@@ -41,7 +41,7 @@ app.use('/api/softskills', softSkillsRouter(dbHelpers));
 
 app.post('/api/jobs', (req, res) => {
   
-  axios.post("https://jooble.org/api/1d7d38d8-11e8-454e-a8cc-545db82430c9", {
+  axios.post("https://jooble.org/api/8f8d03fd-afc8-4740-b314-bb413140ac4f", {
     "keywords": req.body.keywords,
     "location": req.body.location,
     "page": "1"
