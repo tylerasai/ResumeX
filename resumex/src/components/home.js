@@ -52,9 +52,7 @@ export default function Home(props) {
           </div>
           <div className="home_image">
             <img src={flowchart}></img>
-						<img className="images_home" src={intro}></img>
-						<img className="images_home" src={inspiration}></img>
-						<img className="images_home" src={tech_stack}></img>
+					
 						
 						<div class="header-section">
                   <h2 class="title"> <a href="/main">Enter_Resume<span>X</span></a>

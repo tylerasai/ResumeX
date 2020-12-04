@@ -56,7 +56,7 @@ app.post('/api/jobs', (req, res) => {
 .catch((error) => {
   console.error(error);
   res.status(500);
-  res.send(error);
+  res.send("THERE HAS BEEN AN ERROR");
   
   
 })
