@@ -1,9 +1,7 @@
 import React from "react";
 import "./home.css";
 import flowchart from "../assets/img/flowchart.png";
-import intro from "../assets/img/intro.png";
-import inspiration from "../assets/img/inspiration.png";
-import tech_stack from "../assets/img/tech_stack.png";
+
 
 
 
