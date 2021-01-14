@@ -15,10 +15,8 @@ export default function Footer() {
            <div class="col-xs-6 col-md-3">
             <h6>Quick Links</h6>
             <ul class="footer-links">
-              <li><a href="/about">About Us</a></li>
               <li><a href="/">Home</a></li>
               <li><a href="/main">Main</a></li>
-              <li><a href="/job-search">Job Search</a></li>
 
 
           </ul>
