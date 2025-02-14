@@ -1,4 +1,4 @@
-# ResumeX
+# Resume Score
 ## A platform for checking and editing your resume to qualify for job's description or get job suggestions matching your resume.
 =========
 
