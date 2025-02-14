@@ -2,7 +2,7 @@
 ## A platform for checking and editing your resume to qualify for job's description or get job suggestions matching your resume.
 =========
 
-## Visit the website on: https://resumex2020.herokuapp.com/
+## Visit the website on: https://Resume Scanner2020.herokuapp.com/
 
 
 
@@ -10,19 +10,19 @@
 
 A project built by Lighthouse Labs students.
 
-ResumeX allows users to upload job description and resume and get results whether your resume qualifies for the job! You can also get job suggestions matching your resume. It is user friendly and uses modern frameworks such as React, css, express and more!
+Resume Scanner allows users to upload job description and resume and get results whether your resume qualifies for the job! You can also get job suggestions matching your resume. It is user friendly and uses modern frameworks such as React, css, express and more!
 
 Please enjoy our application and get hired!
 
 ---  Built by: Tyler Asai, Jay Ho and Sher Arsalaie. ---
 
 ## Screenshots
-<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex_demo.gif" width="800">
+<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/Resume Scanner/src/assets/app-imgs/Resume Scanner_demo.gif" width="800">
 
 
 
-<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-home.png" width="800">
-<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/resumex/src/assets/app-imgs/resumex-jobsearch.png" width="800">
+<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/Resume Scanner/src/assets/app-imgs/Resume Scanner-home.png" width="800">
+<img src="https://raw.githubusercontent.com/codertyler/final_project_LHL/master/Resume Scanner/src/assets/app-imgs/Resume Scanner-jobsearch.png" width="800">
 
 
 ## Details about app:
